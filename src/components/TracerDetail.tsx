@@ -139,6 +139,22 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
               allowFullScreen
             />
           </div>
+
+          <div className="flex items-center gap-3 mt-8">
+            <span className="text-primary">🎬</span>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-muted">
+              Demo Video — Non-Sysmon 환경에서의 시연 영상
+            </h4>
+          </div>
+          <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-sm" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/oLme94BEYio"
+              title="TRACER Non-Sysmon 시연 영상"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </section>
 
         {/* Results Bar */}
