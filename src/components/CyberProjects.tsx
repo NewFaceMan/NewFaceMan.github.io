@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { projects } from "@/data/portfolio";
 import TracerDetail from "./TracerDetail";
 import {
@@ -10,7 +11,11 @@ import {
   AnimatedCollapse,
 } from "./motion/MotionWrappers";
 
+const tabs = ["All", "DFIR", "AI Agent"] as const;
+type Tab = (typeof tabs)[number];
+
 export default function CyberProjects() {
+  const [activeTab, setActiveTab] = useState<Tab>("All");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [expandedTroubleshooting, setExpandedTroubleshooting] = useState<
     Record<string, boolean>
@@ -23,20 +28,66 @@ export default function CyberProjects() {
     }));
   };
 
+  const filtered =
+    activeTab === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeTab);
+
   return (
     <section className="py-20 border-t border-border" id="projects">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-6">
             <h2 className="text-2xl font-mono text-primary font-bold">
               &gt; Projects<span className="blink-cursor" />
             </h2>
             <div className="h-px bg-primary/20 flex-grow ml-4" />
           </div>
+
+          {/* Tab Bar */}
+          <div className="flex gap-2 mb-8">
+            {tabs.map((tab) => {
+              const count =
+                tab === "All"
+                  ? projects.length
+                  : projects.filter((p) => p.category === tab).length;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setExpandedId(null);
+                  }}
+                  className={`px-4 py-2 rounded-lg text-sm font-mono transition-all duration-200 border ${
+                    activeTab === tab
+                      ? "bg-primary text-white border-primary shadow-[0_0_12px_rgba(var(--primary-rgb),0.3)]"
+                      : "bg-card text-muted border-border hover:border-primary/40 hover:text-primary"
+                  }`}
+                >
+                  {tab}
+                  <span
+                    className={`ml-2 text-xs ${
+                      activeTab === tab ? "text-white/70" : "text-muted/50"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </ScrollReveal>
 
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+          >
         <StaggerContainer className="flex flex-col gap-8" staggerInterval={0.2}>
-          {projects.map((project) => {
+          {filtered.map((project) => {
             const isFeatured = !!project.award;
             const hasDetail = project.id === "tracer";
             const isExpanded = expandedId === project.id;
@@ -228,6 +279,8 @@ export default function CyberProjects() {
             );
           })}
         </StaggerContainer>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

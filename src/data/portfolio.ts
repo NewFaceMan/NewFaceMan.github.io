@@ -46,6 +46,7 @@ export interface ProjectTroubleshooting {
 
 export interface Project {
   id: string;
+  category: "DFIR" | "AI Agent";
   title: string;
   subtitle: string;
   period: string;
@@ -68,6 +69,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "tracer",
+    category: "DFIR",
     title: "TRACER",
     subtitle:
       "침해사고 아티팩트 간 인과관계를 자동으로 연결하는 Windows 포렌식 분석 도구",
@@ -119,6 +121,7 @@ export const projects: Project[] = [
   },
   {
     id: "security-bot",
+    category: "AI Agent",
     title: "Security Bot",
     subtitle: "보안 뉴스 수집부터 CVE 모니터링, DFIR 학습까지 자동화하는 Telegram 봇",
     period: "2026.01",
@@ -150,6 +153,7 @@ export const projects: Project[] = [
   },
   {
     id: "jarvis-bot",
+    category: "AI Agent",
     title: "Jarvis Bot",
     subtitle:
       "자연어로 일정을 관리하는 AI 개인 비서 - 새로운 기술 독학 및 자동화 마인드셋",
