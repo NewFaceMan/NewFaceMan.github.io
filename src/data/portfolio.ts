@@ -311,7 +311,7 @@ export const education = [
 export const contact = {
   email: "polygun1207@naver.com",
   message:
-    "DFIR, 보안 엔지니어링 관련 채용이나 협업 문의는 언제든 환영합니다!",
+    "프로젝트, CTF 팀 등 보안 관련 문의는 언제든 환영합니다!",
 };
 
 export const profileDetail = {
