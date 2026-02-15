@@ -28,9 +28,16 @@ export default function CyberAbout() {
               </h2>
             </ScrollReveal>
 
-            {/* Value Proposition */}
+            {/* Narrative */}
             <ScrollReveal delay={0.1}>
-              <p className="text-lg text-heading font-medium leading-relaxed">
+              <p className="text-body leading-relaxed">
+                {about.narrative}
+              </p>
+            </ScrollReveal>
+
+            {/* Value Proposition */}
+            <ScrollReveal delay={0.15}>
+              <p className="text-lg text-heading font-bold leading-relaxed border-l-4 border-primary pl-4">
                 {about.valueProposition}
               </p>
             </ScrollReveal>
