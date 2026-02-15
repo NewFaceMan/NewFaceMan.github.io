@@ -127,7 +127,7 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
           <div className="flex items-center gap-3">
             <span className="text-primary">🎬</span>
             <h4 className="text-sm font-bold uppercase tracking-widest text-muted">
-              Demo Video
+              Demo Video — Sysmon 환경에서의 시연 영상
             </h4>
           </div>
           <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-sm" style={{ paddingBottom: "56.25%" }}>
