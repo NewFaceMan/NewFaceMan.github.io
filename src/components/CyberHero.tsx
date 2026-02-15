@@ -42,6 +42,20 @@ const terminalLines = [
     delay: 400,
   },
   {
+    id: "awards-cmd",
+    content: <span className="text-[#22d3ee]">$ cat awards.log</span>,
+    delay: 600,
+  },
+  {
+    id: "awards-result",
+    content: (
+      <span className="text-yellow-400 block mt-1 ml-2 mb-4">
+        &gt; TRACER 최우수상 | KIS 경진대회 우수상
+      </span>
+    ),
+    delay: 400,
+  },
+  {
     id: "ls-cmd",
     content: <span className="text-[#22d3ee]">$ ls achievements/</span>,
     delay: 600,
@@ -49,8 +63,8 @@ const terminalLines = [
   {
     id: "ls-result",
     content: (
-      <span className="text-yellow-400 block mt-1 ml-2">
-        &gt; TRACER (최우수상) | Security Bot | 12+ 컨퍼런스
+      <span className="text-green-400 block mt-1 ml-2">
+        &gt; 21종 아티팩트 인과관계 자동화 | APT 보고서 79건 분석 | 보안 봇 2종 개발
       </span>
     ),
     delay: 400,
@@ -107,7 +121,7 @@ export default function CyberHero() {
               View Projects
             </a>
             <a
-              href="/pdf"
+              href="/pdf?download"
               target="_blank"
               className="text-center bg-card hover:bg-primary/10 text-primary font-bold font-mono py-3 px-8 rounded-lg border border-border hover:border-primary transition-all duration-300"
             >

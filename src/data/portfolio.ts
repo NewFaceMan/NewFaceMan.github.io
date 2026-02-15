@@ -344,12 +344,12 @@ export const contact = {
 
 export const profileDetail = {
   university: "강남대학교 소프트웨어응용학부 4학년",
-  universityPeriod: "2020.03 ~ 2026.08 (졸업예정)",
+  universityPeriod: "2024.03 ~ 2026.08 (졸업예정)",
   military: "공군 병장 만기전역",
-  militaryPeriod: "2021.04 ~ 2023.01",
+  militaryPeriod: "2021.06.14 ~ 2023.03.13",
   activities: [
     "강남대학교 정보보안 동아리 KIS 회장 (학술동아리 경진대회 우수상)",
-    "HDF LAB 활동",
+    "HDF LAB 활동 (2025.06 ~)",
   ],
 };
 
