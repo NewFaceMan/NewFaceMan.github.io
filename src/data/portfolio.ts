@@ -32,7 +32,7 @@ export const about = {
   ],
   highlights: [
     "토스뱅크 부트캠프 프로젝트 경진대회 최우수상 수상",
-    "TRACER 프로젝트 팀장 - 5인 팀, 기여도 ~60% (주제 선정 + 핵심 룰셋 설계 + 프로젝트 관리)",
+    "TRACER 프로젝트 팀장 - 5인 팀, 기여도 ~35% (주제 선정 + 핵심 룰셋 설계 + 프로젝트 관리)",
     "보안 컨퍼런스 12회+ 참석 (K-DFS, CODEGATE, SANS 등)",
     "정보보안 동아리 KIS 회장 - 학술동아리 경진대회 우수상 수상",
   ],
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     period: "2025.12 ~ 2026.02",
     role: "팀장 (Back-end Lead)",
     teamSize: "5인 팀",
-    contribution: "~60% (주제 선정, 핵심 룰셋 설계, PM)",
+    contribution: "~35% (주제 선정, 핵심 룰셋 설계, PM)",
     techStack: [
       "Python",
       "FastAPI",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     id: "security-bot",
     title: "Security Bot",
     subtitle: "보안 뉴스 수집부터 CVE 모니터링, DFIR 학습까지 자동화하는 Telegram 봇",
-    period: "2025.10 ~ 2025.11",
+    period: "2026.01",
     role: "개인 프로젝트 (기획/설계/개발 전담)",
     techStack: ["Python", "Telegram API", "Gemini AI", "RSS", "NVD API"],
     features: [
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     title: "Jarvis Bot",
     subtitle:
       "자연어로 일정을 관리하는 AI 개인 비서 - 새로운 기술 독학 및 자동화 마인드셋",
-    period: "2025.09 ~ 2025.10",
+    period: "2026.01",
     role: "개인 프로젝트 (기획/설계/개발 전담)",
     techStack: ["Python", "Telegram API", "Google Calendar API", "Gemini AI"],
     features: [
@@ -284,8 +284,14 @@ export const education = [
   },
   {
     institution: "2025 국가 사이버 안보 아카데미",
-    organizer: "",
+    organizer: "한국사이버안보학회",
     period: "2025.07 ~ 2025.08",
+    note: "수료",
+  },
+  {
+    institution: "2025 청년 갭이어 프로그램",
+    organizer: "경기도청년미래재단",
+    period: "2025.06 ~ 2025.11",
     note: "수료",
   },
   {
@@ -341,7 +347,7 @@ export const ctf = [
 export const tracerDetail = {
   background:
     "토스뱅크 사이버보안 엔지니어 부트캠프 최종 프로젝트로, 실제 침해사고 분석 시 아티팩트 간 연관성을 수동으로 분석하는 비효율을 해결하기 위해 개발했습니다. Velociraptor로 수집한 Windows 아티팩트를 자동 파싱하고, 아티팩트 간 인과관계를 룰 기반으로 연결하여 타임라인과 관계 그래프를 시각화합니다.",
-  role: "팀장 (Back-end Lead, 5인 팀, 기여도 ~60%)",
+  role: "팀장 (Back-end Lead, 5인 팀, 기여도 ~35%)",
   contributions: [
     "프로젝트 주제 선정 및 전체 아키텍처 설계",
     "스프린트 일정 수립, 작업 분배 및 주간 회의 주도",
