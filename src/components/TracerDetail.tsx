@@ -122,6 +122,25 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
           ))}
         </section>
 
+        {/* Demo Video */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="text-primary">🎬</span>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-muted">
+              Demo Video
+            </h4>
+          </div>
+          <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-sm" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/jJ9hbm4Bhb8"
+              title="TRACER 시연 영상"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </section>
+
         {/* Results Bar */}
         <section className="bg-primary px-8 py-6 rounded-xl flex flex-wrap gap-8 items-center justify-around">
           {tracerDetail.results.map((r, i) => (
