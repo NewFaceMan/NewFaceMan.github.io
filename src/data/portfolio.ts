@@ -239,6 +239,21 @@ export const skills: Skill[] = [
         level: "intermediate",
         description: "악성코드 시그니처 탐지 규칙",
       },
+      {
+        name: "FTK Imager",
+        level: "intermediate",
+        description: "디스크 이미징 및 아티팩트 수집",
+      },
+      {
+        name: "HxD",
+        level: "intermediate",
+        description: "헥스 에디터 기반 바이너리 분석",
+      },
+      {
+        name: "Magnet AXIOM",
+        level: "beginner",
+        description: "디지털 포렌식 통합 분석 (사용 경험)",
+      },
     ],
   },
   {
@@ -268,6 +283,7 @@ export const skills: Skill[] = [
         level: "intermediate",
         description: "네트워크 보안 분석",
       },
+      { name: "AWS", level: "beginner", description: "클라우드 인프라 학습 중" },
     ],
   },
 ];

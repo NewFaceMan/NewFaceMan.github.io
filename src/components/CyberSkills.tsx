@@ -14,10 +14,10 @@ const categoryIcons: Record<string, string> = {
 };
 
 const levelConfig = {
-  expert: { label: "EXP", width: "w-[95%]", accent: true },
-  advanced: { label: "ADV", width: "w-[85%]", accent: true },
-  intermediate: { label: "INT", width: "w-[65%]", accent: false },
-  beginner: { label: "BEG", width: "w-[30%]", accent: false },
+  expert: { label: "숙련", width: "w-[95%]", accent: true },
+  advanced: { label: "상", width: "w-[85%]", accent: true },
+  intermediate: { label: "중", width: "w-[65%]", accent: false },
+  beginner: { label: "기초", width: "w-[30%]", accent: false },
 };
 
 export default function CyberSkills() {
