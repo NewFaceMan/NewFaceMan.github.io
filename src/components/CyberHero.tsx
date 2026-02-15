@@ -50,7 +50,7 @@ const terminalLines = [
     id: "awards-result",
     content: (
       <span className="text-yellow-400 block mt-1 ml-2 mb-4">
-        &gt; TRACER 최우수상 | KIS 경진대회 우수상
+        &gt; TRACER 최우수상 | 강남대학교 동아리 경진대회 우수상
       </span>
     ),
     delay: 400,
