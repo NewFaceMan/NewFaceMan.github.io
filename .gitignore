@@ -36,6 +36,15 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local / personal
+.claude/
+MY_INFO.md
+SESSION_CONTEXT.md
+start.bat
+stop.bat
+Dev_docs/
+docs/learning/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
