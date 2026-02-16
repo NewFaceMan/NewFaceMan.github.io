@@ -10,7 +10,7 @@ export default function CyberEducation() {
     <section className="py-24 bg-bg" id="education">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
-          <p className="font-mono text-xs text-accent tracking-wider mb-2">04</p>
+          <p className="font-sans text-xs text-accent tracking-wider mb-2">04</p>
           <h2 className="text-3xl font-bold text-heading mb-12">Education & Training</h2>
         </ScrollReveal>
 
@@ -37,7 +37,7 @@ export default function CyberEducation() {
 
                     <div className="bg-surface rounded-xl border border-border p-5 shadow-sm hover:shadow-md hover:border-[#cbd5e1] transition-all duration-200">
                       {/* Period */}
-                      <div className="font-mono text-xs text-muted mb-2">
+                      <div className="font-sans text-xs text-muted mb-2">
                         {edu.period}
                       </div>
 
@@ -47,7 +47,7 @@ export default function CyberEducation() {
                           {edu.institution}
                         </h3>
                         {isTop && (
-                          <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-accent-dim text-accent border border-accent-border font-semibold">
+                          <span className="font-sans text-[11px] px-2.5 py-0.5 rounded-md bg-accent-dim text-accent border border-accent-border font-semibold">
                             최우수상
                           </span>
                         )}

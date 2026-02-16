@@ -17,7 +17,7 @@ export default function CyberSkills() {
     <section className="py-24 bg-bg" id="skills">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <p className="font-mono text-xs text-accent tracking-wider mb-2">02</p>
+          <p className="font-sans text-xs text-accent tracking-wider mb-2">02</p>
           <h2 className="text-3xl font-bold text-heading">Skills</h2>
         </ScrollReveal>
 

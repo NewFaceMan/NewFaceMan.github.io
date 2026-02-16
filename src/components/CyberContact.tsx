@@ -53,7 +53,7 @@ export default function CyberContact() {
     <section className="py-24 bg-surface" id="contact">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
-          <p className="font-mono text-xs text-accent tracking-wider mb-2">05</p>
+          <p className="font-sans text-xs text-accent tracking-wider mb-2">05</p>
           <h2 className="text-3xl font-bold text-heading mb-4">Contact</h2>
           <p className="text-body text-base mb-12">{contact.message}</p>
         </ScrollReveal>

@@ -34,7 +34,7 @@ export default function CyberProjects() {
     <section className="py-24 bg-surface" id="projects">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
-          <p className="font-mono text-xs text-accent tracking-wider mb-2">03</p>
+          <p className="font-sans text-xs text-accent tracking-wider mb-2">03</p>
           <h2 className="text-3xl font-bold text-heading mb-8">Projects</h2>
 
           {/* Tab Bar */}
@@ -101,7 +101,7 @@ export default function CyberProjects() {
                         {/* Card */}
                         <div className="bg-bg rounded-xl border border-border p-6 shadow-sm hover:shadow-md hover:border-[#cbd5e1] transition-all duration-200">
                           {/* Period */}
-                          <div className="font-mono text-xs text-muted mb-3">
+                          <div className="font-sans text-xs text-muted mb-3">
                             {project.period}
                           </div>
 
@@ -111,7 +111,7 @@ export default function CyberProjects() {
                               {project.title}
                             </h3>
                             {project.award && (
-                              <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-accent-dim text-accent border border-accent-border font-semibold">
+                              <span className="font-sans text-[11px] px-2.5 py-0.5 rounded-md bg-accent-dim text-accent border border-accent-border font-semibold">
                                 {project.award}
                               </span>
                             )}
@@ -122,7 +122,7 @@ export default function CyberProjects() {
                           </p>
 
                           {/* Metadata */}
-                          <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs font-mono text-muted mb-6">
+                          <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs font-sans text-muted mb-6">
                             <span>{project.role}</span>
                             {project.teamSize && (
                               <>
@@ -141,7 +141,7 @@ export default function CyberProjects() {
                           {/* PAR */}
                           <div className="space-y-3 mb-6">
                             <div className="flex gap-4">
-                              <span className="font-mono text-[11px] text-danger shrink-0 w-[70px] mt-0.5 tracking-wide font-medium">
+                              <span className="font-sans text-[11px] text-danger shrink-0 w-[70px] mt-0.5 tracking-wide font-medium">
                                 PROBLEM
                               </span>
                               <p className="text-body text-sm leading-relaxed">
@@ -149,7 +149,7 @@ export default function CyberProjects() {
                               </p>
                             </div>
                             <div className="flex gap-4">
-                              <span className="font-mono text-[11px] text-accent shrink-0 w-[70px] mt-0.5 tracking-wide font-medium">
+                              <span className="font-sans text-[11px] text-accent shrink-0 w-[70px] mt-0.5 tracking-wide font-medium">
                                 ACTION
                               </span>
                               <p className="text-body text-sm leading-relaxed">
@@ -157,7 +157,7 @@ export default function CyberProjects() {
                               </p>
                             </div>
                             <div className="flex gap-4">
-                              <span className="font-mono text-[11px] text-success shrink-0 w-[70px] mt-0.5 tracking-wide font-medium">
+                              <span className="font-sans text-[11px] text-success shrink-0 w-[70px] mt-0.5 tracking-wide font-medium">
                                 RESULT
                               </span>
                               <p className="text-body text-sm leading-relaxed">
@@ -189,7 +189,7 @@ export default function CyberProjects() {
                             {project.techStack.map((tech) => (
                               <span
                                 key={tech}
-                                className="font-mono text-[11px] px-2.5 py-1 rounded-md bg-elevated text-body"
+                                className="font-sans text-[11px] px-2.5 py-1 rounded-md bg-elevated text-body"
                               >
                                 {tech}
                               </span>
@@ -198,7 +198,7 @@ export default function CyberProjects() {
 
                           {/* Job Relevance */}
                           <div className="text-xs text-muted border-l-2 border-accent pl-3 mb-5">
-                            <span className="font-mono text-accent text-[10px] tracking-wider font-medium">
+                            <span className="font-sans text-accent text-[10px] tracking-wider font-medium">
                               DFIR RELEVANCE{" "}
                             </span>
                             {project.jobRelevance}
@@ -275,7 +275,7 @@ export default function CyberProjects() {
                                   className="bg-bg rounded-xl border border-border p-5 space-y-3"
                                 >
                                   <div>
-                                    <span className="font-mono text-[10px] text-danger tracking-wider font-medium">
+                                    <span className="font-sans text-[10px] text-danger tracking-wider font-medium">
                                       ISSUE
                                     </span>
                                     <p className="text-body mt-0.5 text-sm">
@@ -283,7 +283,7 @@ export default function CyberProjects() {
                                     </p>
                                   </div>
                                   <div>
-                                    <span className="font-mono text-[10px] text-accent tracking-wider font-medium">
+                                    <span className="font-sans text-[10px] text-accent tracking-wider font-medium">
                                       PROCESS
                                     </span>
                                     <p className="text-body mt-0.5 text-sm">
@@ -291,7 +291,7 @@ export default function CyberProjects() {
                                     </p>
                                   </div>
                                   <div>
-                                    <span className="font-mono text-[10px] text-success tracking-wider font-medium">
+                                    <span className="font-sans text-[10px] text-success tracking-wider font-medium">
                                       SOLUTION
                                     </span>
                                     <p className="text-body mt-0.5 text-sm">

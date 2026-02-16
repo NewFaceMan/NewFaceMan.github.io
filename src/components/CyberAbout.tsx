@@ -19,7 +19,7 @@ export default function CyberAbout() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <ScrollReveal>
-          <p className="font-mono text-xs text-accent tracking-wider mb-2">01</p>
+          <p className="font-sans text-xs text-accent tracking-wider mb-2">01</p>
           <h2 className="text-3xl font-bold text-heading">About</h2>
         </ScrollReveal>
 
@@ -51,7 +51,7 @@ export default function CyberAbout() {
                 {about.keyStrengths.map((s, i) => (
                   <StaggerItem key={i}>
                     <div className="flex gap-4">
-                      <span className="font-mono text-sm text-accent font-semibold shrink-0 mt-0.5">
+                      <span className="font-sans text-sm text-accent font-semibold shrink-0 mt-0.5">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <div>
@@ -144,7 +144,7 @@ export default function CyberAbout() {
                       className="flex items-center justify-between text-sm"
                     >
                       <span className="text-body">{cert.name}</span>
-                      <span className="font-mono text-xs text-success px-2 py-0.5 bg-[rgba(5,150,105,0.08)] rounded">
+                      <span className="font-sans text-xs text-success px-2 py-0.5 bg-[rgba(5,150,105,0.08)] rounded">
                         {cert.status}
                       </span>
                     </div>
