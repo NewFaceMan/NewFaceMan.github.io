@@ -74,13 +74,14 @@ export default function CyberHero() {
 
         {/* Right: Profile Photo */}
         <FadeIn delay={0.5} duration={0.6}>
-          <div className="shrink-0">
+          <div className="shrink-0 relative">
+            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#2563eb]/10 to-[#1d4ed8]/5 blur-sm" />
             <Image
               src="/profile.jpg"
               alt="박상우 프로필"
-              width={220}
-              height={293}
-              className="rounded-2xl object-cover shadow-sm border border-border"
+              width={280}
+              height={373}
+              className="relative rounded-2xl object-cover shadow-md border border-accent/20"
               priority
             />
           </div>

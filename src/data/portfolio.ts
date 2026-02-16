@@ -2,7 +2,7 @@ export const profile = {
   name: "박상우",
   title: "CERT & DFIR Analyst 지망",
   description:
-    "침해 흔적을 추적하는 것에서 끝나지 않고, 분석 과정 자체를 도구화하여 팀의 탐지·대응 역량을 높이는 CERT/DFIR 분석가를 목표로 하고 있습니다.",
+    "공격자의 관점을 이해하고, 정밀한 아티팩트 분석과 반복 업무의 자동화를 추구하는 CERT/DFIR 분석가가 되고자 합니다.",
   email: "polygun1207@naver.com",
   github: "https://github.com/NewFaceMan",
   linkedin:
@@ -14,7 +14,7 @@ export const about = {
   narrative:
     "취약한 환경을 직접 구축하고 공격 시나리오를 설계·실행한 뒤 그 흔적을 추적하며, 공격자의 관점에서 방어를 설계하는 분석 습관을 체득했습니다. 기술적으로 \"어떻게 뚫렸는가\"를 분석하는 것을 넘어, \"왜 이 시점에 이 조직이 타깃이 되었는가\"까지 질문하는 분석가로 성장하고 있습니다.",
   valueProposition:
-    "침해 흔적을 추적하는 것에서 끝나지 않고, 분석 과정 자체를 도구화하여 팀의 탐지·대응 역량을 높이는 CERT/DFIR 분석가를 목표로 하고 있습니다.",
+    "공격자의 관점을 이해하고, 정밀한 아티팩트 분석과 반복 업무의 자동화를 추구하는 CERT/DFIR 분석가가 되고자 합니다.",
   keyStrengths: [
     {
       label: "공격자 관점의 위협 분석",
