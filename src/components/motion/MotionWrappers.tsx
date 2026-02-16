@@ -4,6 +4,9 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import {
   motion,
   useInView,
+  useScroll,
+  useSpring,
+  useTransform,
   AnimatePresence,
   type Variants,
 } from "framer-motion";
@@ -273,5 +276,58 @@ export function AnimatedCollapse({
         </motion.div>
       )}
     </AnimatePresence>
+  );
+}
+
+/* ─── SplitText ─── */
+export function SplitText({
+  text,
+  className,
+  delay = 0,
+  stagger = 0.06,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  stagger?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  return (
+    <span ref={ref} className={className} style={{ display: "inline-flex", overflow: "hidden" }}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ y: "100%", opacity: 0 }}
+          animate={isInView ? { y: "0%", opacity: 1 } : { y: "100%", opacity: 0 }}
+          transition={{
+            duration: 0.5,
+            delay: delay + i * stagger,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          style={{ display: "inline-block", willChange: "transform" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+/* ─── ScrollProgress ─── */
+export function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 200,
+    damping: 50,
+    restDelta: 0.001,
+  });
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-[2px] bg-accent origin-left z-50"
+      style={{ scaleX }}
+    />
   );
 }

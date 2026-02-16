@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { profile } from "@/data/portfolio";
-import { FadeIn } from "./motion/MotionWrappers";
+import { FadeIn, SplitText } from "./motion/MotionWrappers";
 
 export default function CyberHero() {
   return (
@@ -18,11 +18,9 @@ export default function CyberHero() {
       <div className="max-w-6xl mx-auto px-6 w-full py-20 relative z-10 flex flex-col lg:flex-row items-center gap-16">
         {/* Left: Text */}
         <div className="flex-1">
-          <FadeIn delay={0.25} duration={0.6}>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-heading tracking-tight leading-tight">
-              {profile.name}
-            </h1>
-          </FadeIn>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-heading tracking-tight leading-tight">
+            <SplitText text={profile.name} delay={0.2} stagger={0.08} />
+          </h1>
 
           <FadeIn delay={0.4} duration={0.6}>
             <p className="text-lg md:text-xl text-accent font-medium mt-3">
@@ -74,16 +72,17 @@ export default function CyberHero() {
 
         {/* Right: Profile Photo */}
         <FadeIn delay={0.5} duration={0.6}>
-          <div className="shrink-0 relative">
-            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#2563eb]/10 to-[#1d4ed8]/5 blur-sm" />
-            <Image
-              src="/profile.jpg"
-              alt="박상우 프로필"
-              width={280}
-              height={373}
-              className="relative rounded-2xl object-cover shadow-md border border-accent/20"
-              priority
-            />
+          <div className="shrink-0">
+            <div className="rotating-border rounded-2xl inline-block">
+              <Image
+                src="/profile.jpg"
+                alt="박상우 프로필"
+                width={280}
+                height={373}
+                className="rounded-2xl object-cover relative z-10"
+                priority
+              />
+            </div>
           </div>
         </FadeIn>
       </div>

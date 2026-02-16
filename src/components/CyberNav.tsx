@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ScrollProgress } from "./motion/MotionWrappers";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -15,6 +16,8 @@ export default function CyberNav() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
+    <>
+    <ScrollProgress />
     <nav className="print-hide fixed top-0 w-full z-50 bg-bg/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -76,5 +79,6 @@ export default function CyberNav() {
         </AnimatePresence>
       </div>
     </nav>
+    </>
   );
 }
