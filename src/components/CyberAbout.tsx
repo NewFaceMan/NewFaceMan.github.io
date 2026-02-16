@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { about, certifications, profileDetail } from "@/data/portfolio";
 import {
   ScrollReveal,
@@ -101,20 +100,6 @@ export default function CyberAbout() {
 
           {/* Right: Profile + Certs */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Profile Photo */}
-            <ScrollReveal delay={0.05}>
-              <div className="bg-bg rounded-xl border border-border p-6 shadow-sm flex justify-center">
-                <Image
-                  src="/profile.jpg"
-                  alt="박상우 프로필"
-                  width={180}
-                  height={240}
-                  className="rounded-lg object-cover"
-                  priority
-                />
-              </div>
-            </ScrollReveal>
-
             {/* Profile Card */}
             <ScrollReveal delay={0.1}>
               <div className="bg-bg rounded-xl border border-border p-6 shadow-sm">
