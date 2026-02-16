@@ -19,7 +19,7 @@ export default function CyberAbout() {
         {/* Header */}
         <ScrollReveal>
           <p className="font-sans text-xs text-accent tracking-wider mb-2">01</p>
-          <h2 className="text-3xl font-bold text-heading">About</h2>
+          <h2 className="text-3xl font-bold text-heading">About SangWoo</h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 mt-12">
