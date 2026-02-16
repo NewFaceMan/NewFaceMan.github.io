@@ -49,7 +49,7 @@ export default function CyberHero() {
             ].map((item) => (
               <span
                 key={item}
-                className="font-mono text-[11px] px-3 py-1 rounded-md bg-accent-dim text-accent border border-accent-border"
+                className="text-xs font-medium px-3 py-1 rounded-md bg-accent-dim text-accent border border-accent-border"
               >
                 {item}
               </span>
