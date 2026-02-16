@@ -146,52 +146,6 @@ body {
   margin-left: 2px;
 }
 
-/* Rotating Gradient Border */
-@keyframes rotate-gradient {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.rotating-border {
-  position: relative;
-}
-
-.rotating-border::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 1rem;
-  background: conic-gradient(
-    from 0deg,
-    #2563eb,
-    #1d4ed8,
-    #3b82f6,
-    #60a5fa,
-    #2563eb
-  );
-  animation: rotate-gradient 4s linear infinite;
-  z-index: -1;
-}
-
-.rotating-border::after {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 1rem;
-  background: conic-gradient(
-    from 0deg,
-    #2563eb,
-    #1d4ed8,
-    #3b82f6,
-    #60a5fa,
-    #2563eb
-  );
-  animation: rotate-gradient 4s linear infinite;
-  filter: blur(12px);
-  opacity: 0.4;
-  z-index: -2;
-}
-
 /* PDF / Print */
 .pdf-page { break-after: page; }
 .pdf-page:last-child { break-after: auto; }

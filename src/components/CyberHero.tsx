@@ -73,16 +73,14 @@ export default function CyberHero() {
         {/* Right: Profile Photo */}
         <FadeIn delay={0.5} duration={0.6}>
           <div className="shrink-0">
-            <div className="rotating-border rounded-2xl inline-block">
-              <Image
-                src="/profile.jpg"
-                alt="박상우 프로필"
-                width={280}
-                height={373}
-                className="rounded-2xl object-cover relative z-10"
-                priority
-              />
-            </div>
+            <Image
+              src="/profile.jpg"
+              alt="박상우 프로필"
+              width={280}
+              height={373}
+              className="rounded-2xl object-cover shadow-md border border-border"
+              priority
+            />
           </div>
         </FadeIn>
       </div>
