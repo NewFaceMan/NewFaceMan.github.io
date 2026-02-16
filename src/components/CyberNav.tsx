@@ -15,7 +15,7 @@ export default function CyberNav() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="print-hide fixed top-0 w-full z-50 bg-bg/95 backdrop-blur-sm border-b border-border">
+    <nav className="print-hide fixed top-0 w-full z-50 bg-bg/90 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-14">
           <a

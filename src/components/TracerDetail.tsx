@@ -75,7 +75,7 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
                       className={`w-28 h-14 border flex items-center justify-center text-center p-2 ${
                         i === 0 ||
                         i === tracerDetail.architecture.length - 1
-                          ? "border-accent/40 bg-accent-dim shadow-[0_0_10px_rgba(0,212,170,0.08)]"
+                          ? "border-accent/40 bg-accent-dim shadow-[0_0_10px_rgba(13,148,136,0.06)]"
                           : "border-border bg-surface"
                       }`}
                     >

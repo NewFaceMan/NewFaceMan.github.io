@@ -4,44 +4,44 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* ===== Industrial Dark Theme (dark-only) ===== */
+/* ===== Light Mode — Clean & Professional ===== */
 :root {
-  --accent-rgb: 0, 212, 170;
+  --accent-rgb: 13, 148, 136;
   --radius: 0.5rem;
 
-  /* shadcn tokens — mapped to our dark palette */
-  --background: #0a0f1a;
-  --foreground: #e2e8f0;
-  --card: #0e1525;
-  --card-foreground: #e2e8f0;
-  --popover: #0e1525;
-  --popover-foreground: #e2e8f0;
-  --primary: #00d4aa;
-  --primary-foreground: #0a0f1a;
-  --secondary: #141c2b;
-  --secondary-foreground: #94a3b8;
-  --muted: #141c2b;
-  --muted-foreground: #546178;
-  --accent: #00d4aa;
-  --accent-foreground: #0a0f1a;
+  /* shadcn tokens */
+  --background: #fafbfc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0d9488;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #475569;
+  --muted: #f1f5f9;
+  --muted-foreground: #94a3b8;
+  --accent: #0d9488;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: #1a2332;
-  --input: #1a2332;
-  --ring: #00d4aa;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0d9488;
 }
 
 @theme inline {
-  /* our custom design tokens */
-  --color-bg: #0a0f1a;
-  --color-surface: #0e1525;
-  --color-elevated: #141c2b;
-  --color-heading: #e2e8f0;
-  --color-body: #94a3b8;
-  --color-muted: #546178;
-  --color-accent: #00d4aa;
-  --color-accent-dim: rgba(0, 212, 170, 0.08);
-  --color-border: #1a2332;
-  --color-divider: rgba(0, 212, 170, 0.15);
+  /* custom design tokens */
+  --color-bg: #fafbfc;
+  --color-surface: #ffffff;
+  --color-elevated: #f1f5f9;
+  --color-heading: #0f172a;
+  --color-body: #475569;
+  --color-muted: #94a3b8;
+  --color-accent: #0d9488;
+  --color-accent-dim: rgba(13, 148, 136, 0.06);
+  --color-border: #e2e8f0;
+  --color-divider: rgba(13, 148, 136, 0.12);
   --font-sans: "IBM Plex Sans", "Pretendard Variable", "Pretendard",
     sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -81,7 +81,7 @@ body {
 /* ===== Dot Grid Background ===== */
 .dot-grid {
   background-image: radial-gradient(
-    rgba(0, 212, 170, 0.08) 1px,
+    rgba(13, 148, 136, 0.06) 1px,
     transparent 1px
   );
   background-size: 24px 24px;
@@ -96,6 +96,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
@@ -103,7 +104,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-bg);
+  color: #ffffff;
 }
 
 /* ===== Animations ===== */
@@ -128,16 +129,6 @@ body {
   }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 4px rgba(0, 212, 170, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 12px rgba(0, 212, 170, 0.5);
-  }
-}
-
 .blink-cursor::after {
   content: "\2588";
   animation: blink 1s step-end infinite;
@@ -150,7 +141,7 @@ body {
 .section-rule {
   height: 1px;
   background: linear-gradient(to right, var(--color-accent), transparent 60%);
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 /* ===== PDF / Print ===== */

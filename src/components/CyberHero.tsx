@@ -11,7 +11,7 @@ export default function CyberHero() {
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center bottom, rgba(0,212,170,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse at center bottom, rgba(13,148,136,0.04) 0%, transparent 70%)",
         }}
       />
 

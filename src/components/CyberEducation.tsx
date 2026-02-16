@@ -31,7 +31,7 @@ export default function CyberEducation() {
                     <div
                       className={`absolute left-0 top-[5px] w-[15px] h-[15px] rounded-full border-2 ${
                         isTop
-                          ? "border-accent bg-accent shadow-[0_0_10px_rgba(0,212,170,0.4)]"
+                          ? "border-accent bg-accent shadow-[0_0_10px_rgba(13,148,136,0.3)]"
                           : "border-accent/60 bg-bg"
                       }`}
                     />
