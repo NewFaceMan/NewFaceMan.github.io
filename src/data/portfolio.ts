@@ -2,7 +2,7 @@ export const profile = {
   name: "박상우",
   title: "CERT & DFIR Analyst 지망",
   description:
-    "디지털 포렌식과 침해사고 대응을 중심으로, Python 기반 보안 도구 개발과 AI를 활용한 분석 자동화를 연구하는 CERT/DFIR 분석가가 되고자 합니다.",
+    "침해 흔적을 추적하는 것에서 끝나지 않고, 분석 과정 자체를 도구화하여 팀의 탐지·대응 역량을 높이는 CERT/DFIR 분석가를 목표로 하고 있습니다.",
   email: "polygun1207@naver.com",
   github: "https://github.com/NewFaceMan",
   linkedin:
