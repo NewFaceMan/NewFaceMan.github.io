@@ -50,7 +50,7 @@ const links = [
 
 export default function CyberContact() {
   return (
-    <section className="py-24 bg-surface" id="contact">
+    <section className="py-24" id="contact">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
           <p className="font-sans text-xs text-accent tracking-wider mb-2">05</p>

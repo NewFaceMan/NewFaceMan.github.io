@@ -31,7 +31,7 @@ export default function CyberProjects() {
       : projects.filter((p) => p.category === activeTab);
 
   return (
-    <section className="py-24 bg-surface" id="projects">
+    <section className="py-24" id="projects">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
           <p className="font-sans text-xs text-accent tracking-wider mb-2">03</p>

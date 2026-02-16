@@ -15,7 +15,7 @@ const stats = [
 
 export default function CyberAbout() {
   return (
-    <section className="py-24 bg-surface" id="about">
+    <section className="py-24" id="about">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <ScrollReveal>

@@ -5,7 +5,7 @@ import { FadeIn } from "./motion/MotionWrappers";
 
 export default function CyberHero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-16 bg-bg">
+    <section className="relative min-h-screen flex items-center pt-16">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

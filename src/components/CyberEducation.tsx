@@ -7,7 +7,7 @@ import {
 
 export default function CyberEducation() {
   return (
-    <section className="py-24 bg-bg" id="education">
+    <section className="py-24" id="education">
       <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
           <p className="font-sans text-xs text-accent tracking-wider mb-2">04</p>

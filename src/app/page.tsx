@@ -10,6 +10,13 @@ import CyberFooter from "@/components/CyberFooter";
 export default function Home() {
   return (
     <>
+      {/* Blue gradient background */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: 'linear-gradient(135deg, #f0f4ff 0%, #ffffff 40%, #f0f7ff 70%, #e8f0fe 100%)',
+        }}
+      />
       <div className="fixed inset-0 dot-grid pointer-events-none z-0 opacity-40" />
 
       {/* Floating Gradient Orbs */}
@@ -23,7 +30,7 @@ export default function Home() {
             left: '15%',
             background: 'radial-gradient(circle, #2563eb 0%, transparent 70%)',
             filter: 'blur(100px)',
-            opacity: 0.08,
+            opacity: 0.2,
             animation: 'float-orb-1 20s ease-in-out infinite',
           }}
         />
@@ -36,7 +43,7 @@ export default function Home() {
             right: '10%',
             background: 'radial-gradient(circle, #2563eb 0%, transparent 70%)',
             filter: 'blur(90px)',
-            opacity: 0.06,
+            opacity: 0.15,
             animation: 'float-orb-2 25s ease-in-out infinite',
           }}
         />
@@ -49,7 +56,7 @@ export default function Home() {
             left: '50%',
             background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)',
             filter: 'blur(120px)',
-            opacity: 0.1,
+            opacity: 0.18,
             animation: 'float-orb-3 22s ease-in-out infinite',
           }}
         />

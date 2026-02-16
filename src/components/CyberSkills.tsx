@@ -14,7 +14,7 @@ const levelMap: Record<string, { dots: number; label: string }> = {
 
 export default function CyberSkills() {
   return (
-    <section className="py-24 bg-bg" id="skills">
+    <section className="py-24" id="skills">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <p className="font-sans text-xs text-accent tracking-wider mb-2">02</p>
