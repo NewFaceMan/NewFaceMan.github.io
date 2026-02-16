@@ -130,11 +130,24 @@ export function CountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
   const [display, setDisplay] = useState(0);
+  const [triggered, setTriggered] = useState(false);
+
+  // Fallback: if not triggered after 3s, force display final value
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!triggered) {
+        setTriggered(true);
+        setDisplay(value);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [triggered, value]);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || triggered) return;
+    setTriggered(true);
 
     const start = performance.now();
     const step = (now: number) => {
@@ -146,7 +159,7 @@ export function CountUp({
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [isInView, value, duration]);
+  }, [isInView, triggered, value, duration]);
 
   return (
     <span ref={ref} className={className}>
