@@ -36,10 +36,9 @@ export default function CyberHero() {
         <FadeIn delay={0.7} duration={0.6}>
           <div className="flex flex-wrap gap-3 mt-8">
             {[
-              "TRACER 최우수상",
-              "21종 아티팩트 분석",
-              "APT 보고서 79건",
-              "보안 봇 2종 개발",
+              "DFIR",
+              "Threat Intelligence",
+              "AI Agent 자동화",
             ].map((item) => (
               <span
                 key={item}
