@@ -2,102 +2,98 @@ import { tracerDetail } from "@/data/portfolio";
 
 export default function TracerDetail({ onClose }: { onClose: () => void }) {
   return (
-    <div className="bg-card rounded-xl overflow-hidden border border-border shadow-2xl mt-4">
-      {/* Top Bar */}
-      <header className="flex items-center justify-between px-6 py-4 bg-bg/80 backdrop-blur-md border-b border-primary/20">
+    <div className="border border-border mt-6 bg-surface">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-4 border-b border-border">
         <div className="flex items-center gap-4">
-          <h3 className="text-2xl font-bold tracking-tighter text-primary">TRACER</h3>
-          <div className="h-6 w-px bg-border" />
-          <span className="flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full text-yellow-600 dark:text-yellow-400 text-xs font-bold uppercase tracking-widest">
-            🏆 최우수상
+          <h3 className="font-mono text-lg font-bold text-accent tracking-wide">
+            TRACER
+          </h3>
+          <span className="font-mono text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 border border-accent/40 text-accent">
+            최우수상
           </span>
         </div>
         <button
           onClick={onClose}
-          className="flex items-center gap-2 text-primary/70 hover:text-primary transition-colors text-sm font-medium font-mono"
+          className="font-mono text-[11px] text-muted hover:text-accent transition-colors tracking-wider"
         >
-          ▲ 접기
+          CLOSE
         </button>
       </header>
 
       <div className="p-6 md:p-8 space-y-10">
         {/* Background + Role */}
-        <section className="grid grid-cols-1 lg:grid-cols-10 gap-8">
-          <div className="lg:col-span-6 space-y-4">
-            <span className="inline-block px-3 py-1 bg-badge text-primary text-xs font-bold rounded">
-              Project Background
-            </span>
-            <h4 className="text-2xl md:text-3xl font-bold text-heading leading-tight">
-              Automated Incident Response &amp;<br />Digital Forensic Artifact Analysis
+        <section className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <div className="lg:col-span-3 space-y-4">
+            <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+              PROJECT BACKGROUND
+            </div>
+            <h4 className="text-xl md:text-2xl font-bold text-heading leading-tight">
+              Automated Incident Response &amp;
+              <br />
+              Digital Forensic Artifact Analysis
             </h4>
-            <p className="text-body leading-relaxed">{tracerDetail.background}</p>
+            <p className="text-body text-sm leading-relaxed">
+              {tracerDetail.background}
+            </p>
           </div>
 
-          {/* Role Terminal - always dark */}
-          <div className="lg:col-span-4">
-            <div className="bg-[#1e293b] rounded-lg overflow-hidden border border-[#334155] h-full shadow-inner">
-              <div className="bg-[#0f172a] px-4 py-2 flex items-center gap-2 border-b border-[#334155]">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                </div>
-                <span className="text-[10px] text-slate-500 font-mono ml-2">bash — tracer-profile</span>
+          {/* Role & Contributions */}
+          <div className="lg:col-span-2">
+            <div className="border border-border bg-bg p-5 font-mono text-sm h-full">
+              <div className="text-[10px] text-accent tracking-[0.2em] uppercase mb-4 pb-2 border-b border-border">
+                ROLE &amp; CONTRIBUTIONS
               </div>
-              <div className="p-5 font-mono text-sm space-y-3">
-                <div className="flex gap-2">
-                  <span className="text-[#22d3ee]">$</span>
-                  <span className="text-slate-300">whoami</span>
-                </div>
-                <div className="text-white pl-4">
-                  <span className="text-[#22d3ee] font-bold">Role:</span> {tracerDetail.role}
-                </div>
-                <div className="flex gap-2">
-                  <span className="text-[#22d3ee]">$</span>
-                  <span className="text-slate-300">ls contribution/</span>
-                </div>
-                <ul className="text-slate-400 pl-4 space-y-1 list-disc list-inside">
-                  {tracerDetail.contributions.map((c, i) => (
-                    <li key={i}>{c}</li>
-                  ))}
-                </ul>
-                <div className="flex gap-2">
-                  <span className="text-[#22d3ee]">$</span>
-                  <span className="w-2 h-4 bg-[#22d3ee]/60 animate-pulse" />
-                </div>
+              <div className="text-heading text-sm mb-4">
+                {tracerDetail.role}
               </div>
+              <ul className="space-y-2 text-muted text-xs">
+                {tracerDetail.contributions.map((c, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-accent mt-0.5 text-[10px]">
+                      &#9656;
+                    </span>
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
         {/* Architecture Flow */}
         <section className="space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="text-primary">⚙️</span>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-muted">
-              System Architecture Flow
-            </h4>
+          <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+            SYSTEM ARCHITECTURE FLOW
           </div>
           <div className="overflow-x-auto pb-4">
-            <div className="flex items-center justify-between min-w-[700px] p-6 bg-border-light rounded-xl border border-border">
+            <div className="flex items-center justify-between min-w-[700px] p-6 border border-border bg-bg">
               {tracerDetail.architecture.map((node, i) => (
                 <div key={i} className="contents">
                   <div className="flex flex-col items-center gap-2">
                     <div
-                      className={`w-28 h-16 rounded-lg border bg-badge flex items-center justify-center text-center p-2 ${
-                        i === 0 || i === tracerDetail.architecture.length - 1
-                          ? "border-primary/40 shadow-[0_0_15px_rgba(var(--primary-rgb),0.15)]"
-                          : "border-primary/30"
+                      className={`w-28 h-14 border flex items-center justify-center text-center p-2 ${
+                        i === 0 ||
+                        i === tracerDetail.architecture.length - 1
+                          ? "border-accent/40 bg-accent-dim shadow-[0_0_10px_rgba(0,212,170,0.08)]"
+                          : "border-border bg-surface"
                       }`}
                     >
-                      <span className="text-xs font-bold text-heading">{node.name}</span>
+                      <span className="text-xs font-bold text-heading font-mono">
+                        {node.name}
+                      </span>
                     </div>
-                    <span className="text-[10px] text-muted font-mono">{node.label}</span>
+                    <span className="text-[10px] text-muted font-mono">
+                      {node.label}
+                    </span>
                   </div>
                   {i < tracerDetail.architecture.length - 1 && (
-                    <div className="flex-1 px-2 flex flex-col items-center">
-                      <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
-                      <span className="text-[9px] text-primary/60 mt-1 font-mono">→</span>
+                    <div className="flex-1 px-3 flex items-center">
+                      <div className="h-px w-full bg-border" />
+                      <span className="text-accent text-xs mx-1 shrink-0">
+                        &rarr;
+                      </span>
+                      <div className="h-px w-full bg-border" />
                     </div>
                   )}
                 </div>
@@ -107,30 +103,31 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
         </section>
 
         {/* Feature Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {tracerDetail.detailFeatures.map((feat, i) => (
             <div
               key={i}
-              className="p-6 rounded-xl bg-bg border border-border hover:border-primary/40 transition-all group shadow-sm"
+              className="p-5 border border-border hover:border-accent/30 transition-colors bg-bg"
             >
-              <div className="w-12 h-12 rounded-lg bg-badge flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                {feat.icon}
-              </div>
-              <h5 className="text-heading font-bold text-lg mb-2">{feat.title}</h5>
-              <p className="text-muted text-sm leading-relaxed">{feat.description}</p>
+              <h5 className="text-heading font-bold text-sm mb-2">
+                {feat.title}
+              </h5>
+              <p className="text-muted text-xs leading-relaxed">
+                {feat.description}
+              </p>
             </div>
           ))}
         </section>
 
-        {/* Demo Video */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="text-primary">🎬</span>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-muted">
-              Demo Video — Sysmon 환경에서의 시연 영상
-            </h4>
+        {/* Demo Videos */}
+        <section className="space-y-6">
+          <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+            DEMO &mdash; SYSMON ENVIRONMENT
           </div>
-          <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-sm" style={{ paddingBottom: "56.25%" }}>
+          <div
+            className="relative w-full overflow-hidden border border-border"
+            style={{ paddingBottom: "56.25%" }}
+          >
             <iframe
               className="absolute inset-0 w-full h-full"
               src="https://www.youtube.com/embed/jJ9hbm4Bhb8"
@@ -140,13 +137,13 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
             />
           </div>
 
-          <div className="flex items-center gap-3 mt-8">
-            <span className="text-primary">🎬</span>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-muted">
-              Demo Video — Non-Sysmon 환경에서의 시연 영상
-            </h4>
+          <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase mt-8">
+            DEMO &mdash; NON-SYSMON ENVIRONMENT
           </div>
-          <div className="relative w-full overflow-hidden rounded-xl border border-border shadow-sm" style={{ paddingBottom: "56.25%" }}>
+          <div
+            className="relative w-full overflow-hidden border border-border"
+            style={{ paddingBottom: "56.25%" }}
+          >
             <iframe
               className="absolute inset-0 w-full h-full"
               src="https://www.youtube.com/embed/oLme94BEYio"
@@ -157,16 +154,16 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
           </div>
         </section>
 
-        {/* Results Bar */}
-        <section className="bg-primary px-8 py-6 rounded-xl flex flex-wrap gap-8 items-center justify-around">
+        {/* Results */}
+        <section className="border border-accent/30 bg-accent-dim px-8 py-6 flex flex-wrap gap-10 items-center justify-around">
           {tracerDetail.results.map((r, i) => (
-            <div key={i} className="flex items-center gap-4">
-              {i > 0 && <div className="w-px h-10 bg-white/20 dark:bg-[var(--bg)]/20 hidden md:block mr-4" />}
-              <div className="bg-white dark:bg-[var(--bg)] p-2 rounded-lg text-2xl">{r.icon}</div>
-              <div className="flex flex-col">
-                <span className="text-[10px] text-white/60 dark:text-[var(--bg)]/60 font-bold uppercase tracking-widest">{r.label}</span>
-                <span className="text-xl font-black text-white dark:text-[var(--bg)] leading-none">{r.value}</span>
-              </div>
+            <div key={i} className="flex flex-col items-center text-center">
+              <span className="font-mono text-[10px] text-accent/60 tracking-[0.2em] uppercase">
+                {r.label}
+              </span>
+              <span className="text-lg font-bold text-heading mt-1">
+                {r.value}
+              </span>
             </div>
           ))}
         </section>

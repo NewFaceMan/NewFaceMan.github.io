@@ -1,63 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-/* ===== Light Mode (default) ===== */
+/* ===== Industrial Dark Theme ===== */
 :root {
-  --bg: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-terminal: #1e293b;
-  --text-heading: #0f172a;
-  --text-body: #334155;
-  --text-muted: #64748b;
-  --primary: #0891b2;
-  --primary-rgb: 8, 145, 178;
-  --primary-soft: #ecfeff;
-  --secondary: #2563eb;
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
-  --nav-bg: rgba(255, 255, 255, 0.85);
-  --skill-bar-bg: #e2e8f0;
-  --badge-bg: rgba(8, 145, 178, 0.1);
-}
-
-/* ===== Dark Mode (Professional Dark - toned down) ===== */
-.dark {
-  --bg: #0f172a;
-  --bg-card: #1e293b;
-  --bg-terminal: #0f172a;
-  --text-heading: #f1f5f9;
-  --text-body: #cbd5e1;
-  --text-muted: #94a3b8;
-  --primary: #22d3ee;
-  --primary-rgb: 34, 211, 238;
-  --primary-soft: rgba(34, 211, 238, 0.1);
-  --secondary: #3b82f6;
-  --border: #334155;
-  --border-light: #1e293b;
-  --nav-bg: rgba(15, 23, 42, 0.85);
-  --skill-bar-bg: #334155;
-  --badge-bg: rgba(34, 211, 238, 0.1);
+  --accent-rgb: 0, 212, 170;
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-card: var(--bg-card);
-  --color-terminal: var(--bg-terminal);
-  --color-heading: var(--text-heading);
-  --color-body: var(--text-body);
-  --color-muted: var(--text-muted);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-border: var(--border);
-  --color-border-light: var(--border-light);
-  --color-primary-soft: var(--primary-soft);
-  --color-skill-bar: var(--skill-bar-bg);
-  --color-badge: var(--badge-bg);
-  --font-sans: "Pretendard Variable", "Pretendard", "Space Grotesk", sans-serif;
-  --font-mono: "Fira Code", monospace;
+  --color-bg: #0a0f1a;
+  --color-surface: #0e1525;
+  --color-elevated: #141c2b;
+  --color-heading: #e2e8f0;
+  --color-body: #94a3b8;
+  --color-muted: #546178;
+  --color-accent: #00d4aa;
+  --color-accent-dim: rgba(0, 212, 170, 0.08);
+  --color-border: #1a2332;
+  --color-divider: rgba(0, 212, 170, 0.15);
+  --font-sans: "IBM Plex Sans", "Pretendard Variable", "Pretendard", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 html {
@@ -65,73 +27,116 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--text-body);
+  background: var(--color-bg);
+  color: var(--color-body);
   font-family: var(--font-sans);
-  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+/* ===== Dot Grid Background ===== */
+.dot-grid {
+  background-image: radial-gradient(
+    rgba(0, 212, 170, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
 
-::selection { background: var(--primary); color: var(--bg); }
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
 
-/* Animations */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ===== Animations ===== */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
+
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 4px rgba(0, 212, 170, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(0, 212, 170, 0.5);
+  }
 }
 
 .blink-cursor::after {
-  content: "_";
+  content: "\2588";
   animation: blink 1s step-end infinite;
-}
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Glow effects (dark mode only) */
-.neon-shadow { box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.15); }
-.neon-shadow-hover:hover {
-  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.25);
-  border-color: rgba(var(--primary-rgb), 0.4);
+  color: var(--color-accent);
+  font-size: 0.85em;
+  margin-left: 2px;
 }
 
-/* Grid background */
-.grid-bg {
-  background-image: linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
+/* ===== Section Divider ===== */
+.section-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent),
+    transparent 60%
+  );
+  opacity: 0.2;
 }
 
-/* ===== PDF / Print Styles ===== */
-.pdf-page { break-after: page; }
-.pdf-page:last-child { break-after: auto; }
-.pdf-no-break { break-inside: avoid; }
+/* ===== PDF / Print ===== */
+.pdf-page {
+  break-after: page;
+}
+.pdf-page:last-child {
+  break-after: auto;
+}
+.pdf-no-break {
+  break-inside: avoid;
+}
 
 @media print {
-  @page { size: A4; margin: 15mm; }
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     background: white !important;
     color: #111 !important;
   }
-  .print-hide { display: none !important; }
-  .print-show-url a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.7em;
-    color: #666 !important;
+  .print-hide {
+    display: none !important;
   }
-  * { box-shadow: none !important; }
-  a[href]::after { content: none !important; }
+  * {
+    box-shadow: none !important;
+  }
 }

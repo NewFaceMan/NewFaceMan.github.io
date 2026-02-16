@@ -7,46 +7,61 @@ import {
 
 export default function CyberEducation() {
   return (
-    <section className="py-20 border-t border-border" id="education">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 border-t border-border" id="education">
+      <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 font-mono border-b border-primary/20 pb-4">
-            <span className="mr-2 opacity-70">&gt;</span>Education &amp; Training
-          </h2>
+          <div className="font-mono text-[11px] text-muted tracking-[0.3em] uppercase mb-12">
+            SEC.05 &mdash; EDUCATION &amp; TRAINING
+          </div>
         </ScrollReveal>
 
-        <div className="bg-card/50 rounded-xl overflow-hidden border border-border shadow-sm">
-          <StaggerContainer
-            className="grid grid-cols-1 divide-y divide-border"
-            staggerInterval={0.15}
-          >
-            {education.map((edu, i) => (
-              <StaggerItem key={i}>
-                <div className="p-6 md:px-8 hover:bg-primary/5 transition-colors group relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                    <div className="flex-grow">
-                      <div className="flex items-center gap-3 flex-wrap">
-                        <h3 className="text-lg md:text-xl font-bold text-heading group-hover:text-primary transition-colors">
-                          {edu.institution}
-                        </h3>
-                        {edu.note.includes("최우수상") && (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary text-white dark:text-[var(--bg)] shadow-[0_0_10px_rgba(var(--primary-rgb),0.3)]">
-                            🏆 최우수상
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-muted mt-1 text-sm font-light">
-                        {edu.organizer && `${edu.organizer} · `}{edu.note}
-                      </p>
-                    </div>
-                    <div className="font-mono text-sm text-primary/80 bg-badge px-3 py-1 rounded border border-primary/10 whitespace-nowrap">
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-[7px] top-2 bottom-0 w-px bg-border" />
+
+          <StaggerContainer className="space-y-8" staggerInterval={0.12}>
+            {education.map((edu, i) => {
+              const isTop = edu.note.includes("최우수상");
+
+              return (
+                <StaggerItem key={i}>
+                  <div className="relative pl-10 group">
+                    {/* Timeline node */}
+                    <div
+                      className={`absolute left-0 top-[5px] w-[15px] h-[15px] rounded-full border-2 ${
+                        isTop
+                          ? "border-accent bg-accent shadow-[0_0_10px_rgba(0,212,170,0.4)]"
+                          : "border-accent/60 bg-bg"
+                      }`}
+                    />
+
+                    {/* Period */}
+                    <div className="font-mono text-xs text-muted mb-2">
                       {edu.period}
                     </div>
+
+                    {/* Institution */}
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <h3 className="text-base font-medium text-heading group-hover:text-accent transition-colors">
+                        {edu.institution}
+                      </h3>
+                      {isTop && (
+                        <span className="font-mono text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 border border-accent/40 text-accent">
+                          최우수상
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Organizer & Note */}
+                    <p className="text-muted text-sm mt-1">
+                      {edu.organizer && `${edu.organizer} · `}
+                      {edu.note}
+                    </p>
                   </div>
-                </div>
-              </StaggerItem>
-            ))}
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </div>
       </div>

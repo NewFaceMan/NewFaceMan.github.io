@@ -21,11 +21,8 @@ export default function CyberProjects() {
     Record<string, boolean>
   >({});
 
-  const toggleTroubleshooting = (projectId: string) => {
-    setExpandedTroubleshooting((prev) => ({
-      ...prev,
-      [projectId]: !prev[projectId],
-    }));
+  const toggleTroubleshooting = (id: string) => {
+    setExpandedTroubleshooting((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const filtered =
@@ -34,18 +31,15 @@ export default function CyberProjects() {
       : projects.filter((p) => p.category === activeTab);
 
   return (
-    <section className="py-20 border-t border-border" id="projects">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 border-t border-border" id="projects">
+      <div className="max-w-4xl mx-auto px-6">
         <ScrollReveal>
-          <div className="flex items-center gap-2 mb-6">
-            <h2 className="text-2xl font-mono text-primary font-bold">
-              &gt; Projects<span className="blink-cursor" />
-            </h2>
-            <div className="h-px bg-primary/20 flex-grow ml-4" />
+          <div className="font-mono text-[11px] text-muted tracking-[0.3em] uppercase mb-8">
+            SEC.04 &mdash; PROJECTS
           </div>
 
           {/* Tab Bar */}
-          <div className="flex gap-2 mb-8">
+          <div className="flex gap-6 mb-12">
             {tabs.map((tab) => {
               const count =
                 tab === "All"
@@ -58,20 +52,23 @@ export default function CyberProjects() {
                     setActiveTab(tab);
                     setExpandedId(null);
                   }}
-                  className={`px-4 py-2 rounded-lg text-sm font-mono transition-all duration-200 border ${
+                  className={`font-mono text-xs tracking-wider transition-colors ${
                     activeTab === tab
-                      ? "bg-primary text-white border-primary shadow-[0_0_12px_rgba(var(--primary-rgb),0.3)]"
-                      : "bg-card text-muted border-border hover:border-primary/40 hover:text-primary"
+                      ? "text-accent"
+                      : "text-muted hover:text-body"
                   }`}
                 >
-                  {tab}
+                  {tab.toUpperCase()}
                   <span
-                    className={`ml-2 text-xs ${
-                      activeTab === tab ? "text-white/70" : "text-muted/50"
+                    className={`ml-1.5 ${
+                      activeTab === tab ? "text-accent/50" : "text-muted/40"
                     }`}
                   >
                     {count}
                   </span>
+                  {activeTab === tab && (
+                    <div className="h-px bg-accent mt-1.5" />
+                  )}
                 </button>
               );
             })}
@@ -86,219 +83,247 @@ export default function CyberProjects() {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
           >
-        <StaggerContainer className="flex flex-col gap-8" staggerInterval={0.2}>
-          {filtered.map((project) => {
-            const isFeatured = !!project.award;
-            const hasDetail = project.id === "tracer";
-            const isExpanded = expandedId === project.id;
-            const isTsOpen = expandedTroubleshooting[project.id] ?? false;
+            {/* Timeline */}
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-[7px] top-2 bottom-0 w-px bg-border" />
 
-            return (
-              <StaggerItem key={project.id}>
-                <div
-                  className={`relative bg-card rounded-r-xl border border-border p-6 md:p-8 neon-shadow-hover transition-all duration-300 group overflow-hidden shadow-sm ${
-                    isFeatured
-                      ? "border-l-4 border-l-primary"
-                      : "border-l-4 border-l-secondary"
-                  }`}
-                >
-                  {isFeatured && (
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                  )}
+              <StaggerContainer className="space-y-14" staggerInterval={0.2}>
+                {filtered.map((project) => {
+                  const isFeatured = !!project.award;
+                  const hasDetail = project.id === "tracer";
+                  const isExpanded = expandedId === project.id;
+                  const isTsOpen =
+                    expandedTroubleshooting[project.id] ?? false;
 
-                  <div className="relative z-10">
-                    {/* Title + Subtitle + Award */}
-                    <div className="flex items-center gap-3 mb-1 flex-wrap">
-                      <h3 className="text-2xl md:text-3xl font-bold text-heading tracking-tight group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      {project.award && (
-                        <span className="px-2 py-1 bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 border border-yellow-500/30 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                          🏆 {project.award}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-body text-sm mb-4">{project.subtitle}</p>
-
-                    {/* Metadata Bar: Period | Role | Team | Contribution */}
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted mb-5 font-mono">
-                      <span>{project.period}</span>
-                      <span className="hidden sm:inline text-border">|</span>
-                      <span>{project.role}</span>
-                      {project.teamSize && (
-                        <>
-                          <span className="hidden sm:inline text-border">|</span>
-                          <span>{project.teamSize}</span>
-                        </>
-                      )}
-                      {project.contribution && (
-                        <>
-                          <span className="hidden sm:inline text-border">|</span>
-                          <span>기여도 {project.contribution}</span>
-                        </>
-                      )}
-                    </div>
-
-                    {/* Problem → Action → Result */}
-                    <div className="space-y-3 mb-5">
-                      <div>
-                        <span className="text-red-400 font-bold text-xs uppercase tracking-wider mr-2">
-                          Problem
-                        </span>
-                        <p className="text-body text-sm leading-relaxed mt-1">
-                          {project.problem}
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-blue-400 font-bold text-xs uppercase tracking-wider mr-2">
-                          Action
-                        </span>
-                        <p className="text-body text-sm leading-relaxed mt-1">
-                          {project.action}
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-green-400 font-bold text-xs uppercase tracking-wider mr-2">
-                          Result
-                        </span>
-                        <p className="text-body text-sm leading-relaxed mt-1">
-                          {project.result}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Features */}
-                    <ul className="space-y-1.5 mb-4 text-sm text-body">
-                      {project.features.map((f, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <span className="text-primary text-xs mt-0.5">▸</span>
-                          <span>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className={`px-3 py-1 rounded text-xs font-mono border ${
+                  return (
+                    <StaggerItem key={project.id}>
+                      <div className="relative pl-10">
+                        {/* Timeline node */}
+                        <div
+                          className={`absolute left-0 top-[5px] w-[15px] h-[15px] rounded-full border-2 ${
                             isFeatured
-                              ? "bg-badge text-primary border-primary/20"
-                              : "bg-border-light text-muted border-border"
+                              ? "border-accent bg-accent shadow-[0_0_10px_rgba(0,212,170,0.4)]"
+                              : "border-accent/60 bg-bg"
                           }`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                        />
 
-                    {/* Job Relevance */}
-                    <div className="text-xs text-muted bg-border-light rounded-lg px-4 py-2 mb-4">
-                      <span className="text-primary font-bold mr-1">DFIR 연관성:</span>
-                      {project.jobRelevance}
-                    </div>
+                        {/* Period */}
+                        <div className="font-mono text-xs text-muted mb-3">
+                          {project.period}
+                        </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center gap-3 mt-2">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono border border-border bg-card text-muted hover:border-primary/40 hover:text-primary transition-all"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                          Source Code
-                        </a>
-                      )}
+                        {/* Title + Award */}
+                        <div className="flex items-center gap-3 flex-wrap mb-2">
+                          <h3 className="text-xl md:text-2xl font-bold text-heading tracking-tight">
+                            {project.title}
+                          </h3>
+                          {project.award && (
+                            <span className="font-mono text-[10px] tracking-[0.15em] uppercase px-2 py-1 border border-accent/40 text-accent">
+                              {project.award}
+                            </span>
+                          )}
+                        </div>
 
-                      {/* Troubleshooting Toggle */}
-                      {project.troubleshooting.length > 0 && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleTroubleshooting(project.id);
-                          }}
-                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-mono border transition-all ${
-                            isTsOpen
-                              ? "bg-orange-500/10 border-orange-500/40 text-orange-500"
-                              : "border-orange-500/30 text-orange-400/70 hover:border-orange-500/50 hover:text-orange-400 hover:bg-orange-500/5"
-                          }`}
-                        >
-                          <span className="text-[10px]">{isTsOpen ? "▼" : "▶"}</span>
-                          Troubleshooting
-                          <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                            isTsOpen ? "bg-orange-500/20" : "bg-orange-500/10"
-                          }`}>
-                            {project.troubleshooting.length}
-                          </span>
-                        </button>
-                      )}
+                        <p className="text-body text-sm mb-5">
+                          {project.subtitle}
+                        </p>
 
-                      {/* TRACER Detail Toggle */}
-                      {hasDetail && (
-                        <button
-                          onClick={() =>
-                            setExpandedId(isExpanded ? null : project.id)
-                          }
-                          className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-xs font-mono font-bold border transition-all ml-auto ${
-                            isExpanded
-                              ? "bg-primary text-white border-primary shadow-[0_0_12px_rgba(var(--primary-rgb),0.3)]"
-                              : "border-primary/40 text-primary hover:bg-primary hover:text-white hover:shadow-[0_0_12px_rgba(var(--primary-rgb),0.3)]"
-                          }`}
-                        >
-                          {isExpanded ? "▲ 접기" : "▼ 상세보기"}
-                        </button>
-                      )}
-                    </div>
+                        {/* Metadata */}
+                        <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs font-mono text-muted mb-6">
+                          <span>{project.role}</span>
+                          {project.teamSize && (
+                            <>
+                              <span className="text-border">·</span>
+                              <span>{project.teamSize}</span>
+                            </>
+                          )}
+                          {project.contribution && (
+                            <>
+                              <span className="text-border">·</span>
+                              <span>기여도 {project.contribution}</span>
+                            </>
+                          )}
+                        </div>
 
-                    {/* Troubleshooting Content */}
-                    {project.troubleshooting.length > 0 && (
-                      <AnimatedCollapse isOpen={isTsOpen}>
-                        <div className="mt-4 space-y-3">
-                          {project.troubleshooting.map((ts, i) => (
-                            <div
-                              key={i}
-                              className="bg-bg border border-orange-500/20 rounded-lg p-5 text-sm relative overflow-hidden"
+                        {/* PAR */}
+                        <div className="space-y-4 mb-6">
+                          <div className="flex gap-4">
+                            <span className="font-mono text-[11px] text-red-400/70 shrink-0 w-[70px] mt-0.5 tracking-wide">
+                              PROBLEM
+                            </span>
+                            <p className="text-body text-sm leading-relaxed">
+                              {project.problem}
+                            </p>
+                          </div>
+                          <div className="flex gap-4">
+                            <span className="font-mono text-[11px] text-blue-400/70 shrink-0 w-[70px] mt-0.5 tracking-wide">
+                              ACTION
+                            </span>
+                            <p className="text-body text-sm leading-relaxed">
+                              {project.action}
+                            </p>
+                          </div>
+                          <div className="flex gap-4">
+                            <span className="font-mono text-[11px] text-emerald-400/70 shrink-0 w-[70px] mt-0.5 tracking-wide">
+                              RESULT
+                            </span>
+                            <p className="text-body text-sm leading-relaxed">
+                              {project.result}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Features */}
+                        <div className="mb-5">
+                          <div className="font-mono text-[10px] text-muted tracking-[0.2em] uppercase mb-2">
+                            FEATURES
+                          </div>
+                          <ul className="space-y-1.5 text-sm text-body">
+                            {project.features.map((f, i) => (
+                              <li
+                                key={i}
+                                className="flex items-start gap-2"
+                              >
+                                <span className="text-accent text-[10px] mt-1.5">
+                                  &#9656;
+                                </span>
+                                <span>{f}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Tech Stack */}
+                        <div className="flex flex-wrap gap-2 mb-5">
+                          {project.techStack.map((tech) => (
+                            <span
+                              key={tech}
+                              className="font-mono text-[11px] px-2 py-0.5 border border-border text-muted hover:border-accent/30 hover:text-body transition-colors"
                             >
-                              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-orange-500 to-orange-500/30" />
-                              <div className="pl-3 space-y-3">
-                                <div>
-                                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-500/10 text-red-400 border border-red-500/20 mb-1">
-                                    Problem
-                                  </span>
-                                  <p className="text-body mt-1">{ts.issue}</p>
-                                </div>
-                                <div>
-                                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-1">
-                                    Process
-                                  </span>
-                                  <p className="text-body mt-1">{ts.process}</p>
-                                </div>
-                                <div>
-                                  <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-green-500/10 text-green-400 border border-green-500/20 mb-1">
-                                    Solution
-                                  </span>
-                                  <p className="text-body mt-1">{ts.resolution}</p>
-                                </div>
-                              </div>
-                            </div>
+                              {tech}
+                            </span>
                           ))}
                         </div>
-                      </AnimatedCollapse>
-                    )}
-                  </div>
-                </div>
 
-                <AnimatedCollapse isOpen={hasDetail && isExpanded}>
-                  <TracerDetail onClose={() => setExpandedId(null)} />
-                </AnimatedCollapse>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+                        {/* Job Relevance */}
+                        <div className="text-xs text-muted border-l border-accent/30 pl-3 mb-5">
+                          <span className="font-mono text-accent text-[10px] tracking-wider">
+                            DFIR RELEVANCE{" "}
+                          </span>
+                          {project.jobRelevance}
+                        </div>
+
+                        {/* Action Buttons */}
+                        <div className="flex flex-wrap items-center gap-3">
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 font-mono text-[11px] text-muted hover:text-accent border border-border hover:border-accent/40 px-3 py-1.5 transition-colors"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <svg
+                                className="w-3.5 h-3.5"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  clipRule="evenodd"
+                                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                />
+                              </svg>
+                              SOURCE
+                            </a>
+                          )}
+
+                          {project.troubleshooting.length > 0 && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleTroubleshooting(project.id);
+                              }}
+                              className={`font-mono text-[11px] px-3 py-1.5 border transition-colors ${
+                                isTsOpen
+                                  ? "border-orange-500/40 text-orange-400 bg-orange-500/5"
+                                  : "border-border text-muted hover:border-orange-500/30 hover:text-orange-400"
+                              }`}
+                            >
+                              TROUBLESHOOTING
+                              <span className="ml-1.5 text-[10px] opacity-60">
+                                {project.troubleshooting.length}
+                              </span>
+                            </button>
+                          )}
+
+                          {hasDetail && (
+                            <button
+                              onClick={() =>
+                                setExpandedId(isExpanded ? null : project.id)
+                              }
+                              className={`font-mono text-[11px] px-4 py-1.5 border transition-all ml-auto ${
+                                isExpanded
+                                  ? "border-accent bg-accent text-bg"
+                                  : "border-accent/40 text-accent hover:bg-accent hover:text-bg"
+                              }`}
+                            >
+                              {isExpanded ? "CLOSE" : "DETAIL"}
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Troubleshooting */}
+                        {project.troubleshooting.length > 0 && (
+                          <AnimatedCollapse isOpen={isTsOpen}>
+                            <div className="mt-5 space-y-4">
+                              {project.troubleshooting.map((ts, i) => (
+                                <div
+                                  key={i}
+                                  className="border-l border-orange-500/30 pl-4 py-1 text-sm space-y-3"
+                                >
+                                  <div>
+                                    <span className="font-mono text-[10px] text-red-400/70 tracking-[0.15em]">
+                                      ISSUE
+                                    </span>
+                                    <p className="text-body mt-0.5 text-sm">
+                                      {ts.issue}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <span className="font-mono text-[10px] text-blue-400/70 tracking-[0.15em]">
+                                      PROCESS
+                                    </span>
+                                    <p className="text-body mt-0.5 text-sm">
+                                      {ts.process}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <span className="font-mono text-[10px] text-emerald-400/70 tracking-[0.15em]">
+                                      SOLUTION
+                                    </span>
+                                    <p className="text-body mt-0.5 text-sm">
+                                      {ts.resolution}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </AnimatedCollapse>
+                        )}
+                      </div>
+
+                      <AnimatedCollapse isOpen={hasDetail && isExpanded}>
+                        <TracerDetail
+                          onClose={() => setExpandedId(null)}
+                        />
+                      </AnimatedCollapse>
+                    </StaggerItem>
+                  );
+                })}
+              </StaggerContainer>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
