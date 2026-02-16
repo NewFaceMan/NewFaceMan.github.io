@@ -32,16 +32,15 @@ export const about = {
         "국가사이버안보 아카데미에서 위협 인텔리전스 관점을 확장, 개별 사고를 넘어 캠페인 단위의 지정학적 맥락까지 분석",
     },
     {
-      label: "보안 도구 자동화 개발",
+      label: "AI Agent 활용 업무 자동화",
       detail:
-        "Python + AI로 보안 뉴스 수집, CVE 모니터링, DFIR 학습을 자동화하는 봇 2종 개발",
+        "Python 기반 AI Agent를 설계하여 보안 뉴스 수집, CVE 모니터링, DFIR 학습 워크플로우를 자동화",
     },
   ],
   highlights: [
     "토스뱅크 부트캠프 프로젝트 경진대회 최우수상 수상",
     "TRACER 프로젝트 팀장 - 5인 팀, 기여도 ~35% (주제 선정 + 핵심 룰셋 설계 + PM)",
     "APT 그룹 침해사고 보고서 79건 분석 및 MITRE ATT&CK 매핑",
-    "보안 컨퍼런스 12회+ 참석 (K-DFS, CODEGATE, SANS 등)",
     "정보보안 동아리 KIS 회장 - 학술동아리 경진대회 우수상 수상",
   ],
 };
@@ -353,18 +352,6 @@ export const profileDetail = {
   ],
 };
 
-export const conferences = [
-  { name: "K-DFS (디지털 포렌식 학회)", count: 2 },
-  { name: "CODEGATE", count: 2 },
-  { name: "SANS Korea Summit", count: 1 },
-  { name: "사이버안보 컨퍼런스 (CONCERT)", count: 1 },
-  { name: "KRnet", count: 1 },
-  { name: "KISA 사이버보안 컨퍼런스", count: 1 },
-  { name: "디지털 포렌식 챌린지 발표회", count: 1 },
-  { name: "금융정보보호 컨퍼런스 (FISCON)", count: 1 },
-  { name: "세계보안엑스포 (SECON)", count: 1 },
-  { name: "국가 사이버안보 아카데미 컨퍼런스", count: 1 },
-];
 
 export const ctf = [
   { name: "2024 디지털 포렌식 챌린지", note: "본선 진출" },

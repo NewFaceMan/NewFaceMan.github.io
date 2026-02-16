@@ -6,7 +6,6 @@ import {
   certifications,
   education,
   profileDetail,
-  conferences,
   ctf,
 } from "@/data/portfolio";
 
@@ -401,26 +400,8 @@ export default function PdfPage() {
           </table>
         </div>
 
-        {/* Two-column: Conferences + CTF */}
-        <div className="grid grid-cols-2 gap-6">
-          {/* Conferences */}
-          <div className="pdf-no-break">
-            <h2 className="mb-1.5 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
-              컨퍼런스 참석 (12회+)
-            </h2>
-            <ul className="space-y-0.5 text-[10px] text-gray-700">
-              {conferences.map((c, i) => (
-                <li key={i} className="flex justify-between">
-                  <span>{c.name}</span>
-                  <span className="text-gray-400">
-                    {c.count > 1 ? `${c.count}회` : ""}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* CTF */}
+        {/* CTF */}
+        <div>
           <div className="pdf-no-break">
             <h2 className="mb-1.5 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
               CTF / 챌린지

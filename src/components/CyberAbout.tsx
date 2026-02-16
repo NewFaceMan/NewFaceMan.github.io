@@ -7,7 +7,6 @@ import {
 } from "./motion/MotionWrappers";
 
 const stats = [
-  { value: 12, suffix: "+", label: "Conferences" },
   { value: 3, suffix: "+", label: "Projects" },
   { display: "Top", label: "Award" },
   { display: "Lead", label: "KIS President" },
