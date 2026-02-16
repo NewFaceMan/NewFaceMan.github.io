@@ -28,9 +28,9 @@ export default function Home() {
             height: 500,
             top: '10%',
             left: '15%',
-            background: 'radial-gradient(circle, #2563eb 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #1d4ed8 0%, transparent 70%)',
             filter: 'blur(100px)',
-            opacity: 0.2,
+            opacity: 0.35,
             animation: 'float-orb-1 20s ease-in-out infinite',
           }}
         />
@@ -41,9 +41,9 @@ export default function Home() {
             height: 400,
             top: '50%',
             right: '10%',
-            background: 'radial-gradient(circle, #2563eb 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #1d4ed8 0%, transparent 70%)',
             filter: 'blur(90px)',
-            opacity: 0.15,
+            opacity: 0.3,
             animation: 'float-orb-2 25s ease-in-out infinite',
           }}
         />
@@ -54,9 +54,9 @@ export default function Home() {
             height: 350,
             bottom: '15%',
             left: '50%',
-            background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #2563eb 0%, transparent 70%)',
             filter: 'blur(120px)',
-            opacity: 0.18,
+            opacity: 0.32,
             animation: 'float-orb-3 22s ease-in-out infinite',
           }}
         />
