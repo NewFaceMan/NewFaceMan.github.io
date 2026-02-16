@@ -193,105 +193,38 @@ export const projects: Project[] = [
   },
 ];
 
-export interface Skill {
+export interface SkillRow {
   category: string;
-  items: {
-    name: string;
-    level: "beginner" | "intermediate" | "advanced" | "expert";
-    description?: string;
-  }[];
+  skill: string;
+  experience: string;
 }
 
-export const skills: Skill[] = [
+export const skills: SkillRow[] = [
   {
-    category: "Digital Forensics",
-    items: [
-      {
-        name: "Windows Forensics",
-        level: "advanced",
-        description: "아티팩트 분석, TRACER 도구 개발",
-      },
-      {
-        name: "Memory Forensics",
-        level: "intermediate",
-        description: "Volatility 활용 메모리 분석",
-      },
-      {
-        name: "Linux Forensics",
-        level: "intermediate",
-        description: "리눅스 아티팩트 분석",
-      },
-      {
-        name: "Malware Analysis",
-        level: "intermediate",
-        description: "악성코드 정적/동적 분석",
-      },
-    ],
+    category: "Language",
+    skill: "Python, YAML",
+    experience:
+      "아티팩트 파싱, Rule 엔진, 자동화 스크립트 개발 / TRACER 탐지 규칙 정의 및 설계",
   },
   {
-    category: "Security Tools",
-    items: [
-      {
-        name: "Volatility",
-        level: "intermediate",
-        description: "메모리 포렌식 분석 도구",
-      },
-      {
-        name: "Wireshark",
-        level: "intermediate",
-        description: "네트워크 패킷 분석",
-      },
-      {
-        name: "YARA",
-        level: "intermediate",
-        description: "악성코드 시그니처 탐지 규칙",
-      },
-      {
-        name: "FTK Imager",
-        level: "intermediate",
-        description: "디스크 이미징 및 아티팩트 수집",
-      },
-      {
-        name: "HxD",
-        level: "intermediate",
-        description: "헥스 에디터 기반 바이너리 분석",
-      },
-      {
-        name: "Magnet AXIOM",
-        level: "beginner",
-        description: "디지털 포렌식 통합 분석 (사용 경험)",
-      },
-    ],
+    category: "DFIR",
+    skill: "Velociraptor (VQL)",
+    experience: "아티팩트 수집 커스터마이징, 경로 정규화 로직 구현",
   },
   {
-    category: "Programming",
-    items: [
-      {
-        name: "Python",
-        level: "advanced",
-        description: "보안 도구 개발, 자동화, API 연동",
-      },
-      { name: "C", level: "intermediate", description: "시스템 프로그래밍" },
-      { name: "SQL", level: "intermediate", description: "데이터베이스 쿼리" },
-      {
-        name: "PowerShell",
-        level: "intermediate",
-        description: "윈도우 스크립팅",
-      },
-    ],
+    category: "DFIR",
+    skill: "FTK Imager, HxD 등",
+    experience: "MFT, Prefetch, BAM, USN Journal 등 21종 아티팩트 분석",
   },
   {
-    category: "Infrastructure",
-    items: [
-      { name: "Linux", level: "intermediate", description: "서버 운영 및 관리" },
-      { name: "Docker", level: "beginner", description: "컨테이너 기초" },
-      {
-        name: "Network",
-        level: "intermediate",
-        description: "네트워크 보안 분석",
-      },
-      { name: "AWS", level: "beginner", description: "클라우드 인프라 학습 중" },
-    ],
+    category: "Offensive",
+    skill: "Metasploit",
+    experience: "APT 공격 시나리오 3종 재현",
+  },
+  {
+    category: "Framework",
+    skill: "MITRE ATT&CK",
+    experience: "APT 보고서 79건 분석 후 기법 매핑",
   },
 ];
 
@@ -342,7 +275,7 @@ export const contact = {
 };
 
 export const profileDetail = {
-  university: "강남대학교 소프트웨어응용학부 4학년",
+  university: "강남대학교 ICT융합공학부 소프트웨어전공 4학년",
   universityPeriod: "2024.03 ~ 2026.08 (졸업예정)",
   military: "공군 병장 만기전역",
   militaryPeriod: "2021.06.14 ~ 2023.03.13",

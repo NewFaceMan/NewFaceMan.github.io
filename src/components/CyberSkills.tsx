@@ -5,14 +5,21 @@ import {
   StaggerItem,
 } from "./motion/MotionWrappers";
 
-const levelMap: Record<string, { dots: number; label: string }> = {
-  expert: { dots: 4, label: "Expert" },
-  advanced: { dots: 3, label: "Advanced" },
-  intermediate: { dots: 2, label: "Intermediate" },
-  beginner: { dots: 1, label: "Beginner" },
-};
-
 export default function CyberSkills() {
+  // Group consecutive rows by category for rowSpan display
+  const grouped: { category: string; startIdx: number; count: number }[] = [];
+  skills.forEach((row, i) => {
+    const last = grouped[grouped.length - 1];
+    if (last && last.category === row.category) {
+      last.count++;
+    } else {
+      grouped.push({ category: row.category, startIdx: i, count: 1 });
+    }
+  });
+
+  const categoryStartSet = new Set(grouped.map((g) => g.startIdx));
+  const categoryMap = new Map(grouped.map((g) => [g.startIdx, g]));
+
   return (
     <section className="py-24" id="skills">
       <div className="max-w-6xl mx-auto px-6">
@@ -21,40 +28,46 @@ export default function CyberSkills() {
           <h2 className="text-3xl font-bold text-heading">Skills</h2>
         </ScrollReveal>
 
-        <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12"
-          staggerInterval={0.08}
-        >
-          {skills.map((group) => (
-            <StaggerItem key={group.category}>
-              <div className="bg-surface rounded-xl border border-border p-6 shadow-sm hover:shadow-md hover:border-[#cbd5e1] transition-all duration-200">
-                <h3 className="text-sm font-semibold text-heading mb-5">
-                  {group.category}
-                </h3>
-                <div className="space-y-3">
-                  {group.items.map((item) => {
-                    const config = levelMap[item.level] ?? { dots: 1, label: "Beginner" };
-                    return (
-                      <div key={item.name} className="flex items-center justify-between">
-                        <span className="text-sm text-body">{item.name}</span>
-                        <div className="flex items-center gap-1.5">
-                          {[1, 2, 3, 4].map((dot) => (
-                            <div
-                              key={dot}
-                              className={`w-2 h-2 rounded-full ${
-                                dot <= config.dots ? "bg-accent" : "bg-border"
-                              }`}
-                            />
-                          ))}
-                        </div>
+        <ScrollReveal delay={0.1}>
+          <div className="mt-12 bg-surface rounded-xl border border-border shadow-sm overflow-hidden">
+            {/* Header */}
+            <div className="grid grid-cols-[120px_1fr_2fr] md:grid-cols-[140px_1fr_2fr] text-xs font-semibold text-muted uppercase tracking-wider border-b border-border bg-bg">
+              <div className="px-5 py-3">구분</div>
+              <div className="px-5 py-3 border-l border-border">Skill</div>
+              <div className="px-5 py-3 border-l border-border">기능구현 및 활용경험</div>
+            </div>
+
+            {/* Rows */}
+            <StaggerContainer staggerInterval={0.06}>
+              {skills.map((row, i) => (
+                <StaggerItem key={i}>
+                  <div
+                    className={`grid grid-cols-[120px_1fr_2fr] md:grid-cols-[140px_1fr_2fr] text-sm ${
+                      i < skills.length - 1 ? "border-b border-border" : ""
+                    }`}
+                  >
+                    {/* Category cell */}
+                    {categoryStartSet.has(i) ? (
+                      <div className="px-5 py-3.5 font-semibold text-accent flex items-center">
+                        {row.category}
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+                    ) : (
+                      <div className="px-5 py-3.5" />
+                    )}
+                    {/* Skill cell */}
+                    <div className="px-5 py-3.5 text-heading font-medium border-l border-border">
+                      {row.skill}
+                    </div>
+                    {/* Experience cell */}
+                    <div className="px-5 py-3.5 text-body border-l border-border leading-relaxed">
+                      {row.experience}
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

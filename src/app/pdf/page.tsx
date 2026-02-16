@@ -346,28 +346,24 @@ export default function PdfPage() {
           <h2 className="mb-2 text-[16px] font-bold text-gray-800 uppercase tracking-wide border-b-2 border-gray-800 pb-1">
             Skills
           </h2>
-          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
-            {skills.map((skillGroup) => (
-              <div key={skillGroup.category}>
-                <h3 className="text-[11px] font-bold text-gray-800 mb-1">
-                  {skillGroup.category}
-                </h3>
-                <ul className="space-y-0.5">
-                  {skillGroup.items.map((item) => (
-                    <li
-                      key={item.name}
-                      className="text-[10px] text-gray-700 flex items-baseline gap-1"
-                    >
-                      <span className="font-medium">{item.name}</span>
-                      <span className="text-[9px] text-gray-400">
-                        ({item.level})
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <table className="w-full text-[10px] border-collapse">
+            <thead>
+              <tr className="text-left text-[9px] text-gray-500 uppercase">
+                <th className="pb-1 pr-3 font-semibold w-[60px]">구분</th>
+                <th className="pb-1 pr-3 font-semibold w-[100px]">Skill</th>
+                <th className="pb-1 font-semibold">기능구현 및 활용경험</th>
+              </tr>
+            </thead>
+            <tbody>
+              {skills.map((row, i) => (
+                <tr key={i} className="text-gray-700 border-t border-gray-200">
+                  <td className="py-1 pr-3 font-semibold text-gray-800">{row.category}</td>
+                  <td className="py-1 pr-3 font-medium">{row.skill}</td>
+                  <td className="py-1">{row.experience}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         {/* Education */}
