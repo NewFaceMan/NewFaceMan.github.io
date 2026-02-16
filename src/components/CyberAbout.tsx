@@ -108,17 +108,12 @@ export default function CyberAbout() {
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div>
-                    <span className="text-muted block text-xs mb-0.5">University</span>
-                    <span className="text-body">{profileDetail.university}</span>
-                  </div>
-                  <div>
-                    <span className="text-muted block text-xs mb-0.5">Period</span>
-                    <span className="text-body">{profileDetail.universityPeriod}</span>
+                    <span className="text-muted block text-xs mb-0.5">Education</span>
+                    <span className="text-body">{profileDetail.education}</span>
                   </div>
                   <div>
                     <span className="text-muted block text-xs mb-0.5">Military</span>
                     <span className="text-body">{profileDetail.military}</span>
-                    <span className="text-muted text-xs ml-1">({profileDetail.militaryPeriod})</span>
                   </div>
                   <div>
                     <span className="text-muted block text-xs mb-0.5">Activities</span>

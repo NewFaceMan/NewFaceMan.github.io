@@ -80,19 +80,11 @@ export default function PdfPage() {
             <ul className="space-y-1 text-[10.5px] text-gray-700">
               <li>
                 <span className="font-semibold">
-                  {profileDetail.university}
-                </span>
-                <br />
-                <span className="text-gray-500">
-                  {profileDetail.universityPeriod}
+                  {profileDetail.education}
                 </span>
               </li>
               <li>
                 <span className="font-semibold">{profileDetail.military}</span>
-                <br />
-                <span className="text-gray-500">
-                  {profileDetail.militaryPeriod}
-                </span>
               </li>
               {profileDetail.activities.map((a, i) => (
                 <li key={i}>{a}</li>
