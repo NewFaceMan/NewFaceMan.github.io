@@ -16,8 +16,8 @@ export default function CyberHero() {
 
       <div className="max-w-6xl mx-auto px-6 w-full py-20 relative z-10">
         <FadeIn delay={0.1} duration={0.6}>
-          <p className="font-mono text-xs text-muted tracking-wider mb-4">
-            CERT &amp; DFIR Analyst
+          <p className="text-sm text-muted mb-4">
+            CERT &amp; DFIR Analyst 지망
           </p>
         </FadeIn>
 
