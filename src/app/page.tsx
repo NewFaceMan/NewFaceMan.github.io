@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/ScrollToTop";
 import CyberNav from "@/components/CyberNav";
 import CyberHero from "@/components/CyberHero";
 import CyberAbout from "@/components/CyberAbout";
@@ -62,6 +63,7 @@ export default function Home() {
         />
       </div>
 
+      <ScrollToTop />
       <CyberNav />
       <main className="relative z-10">
         <CyberHero />
