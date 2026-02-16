@@ -10,7 +10,7 @@ import CyberFooter from "@/components/CyberFooter";
 export default function Home() {
   return (
     <>
-      <div className="fixed inset-0 dot-grid pointer-events-none z-0 opacity-50" />
+      <div className="fixed inset-0 dot-grid pointer-events-none z-0 opacity-40" />
 
       <CyberNav />
       <main className="relative z-10">

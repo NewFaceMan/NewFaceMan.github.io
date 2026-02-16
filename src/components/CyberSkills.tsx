@@ -5,66 +5,47 @@ import {
   StaggerItem,
 } from "./motion/MotionWrappers";
 
-const levelMap: Record<
-  string,
-  { dots: number; label: string }
-> = {
-  expert: { dots: 4, label: "EXP" },
-  advanced: { dots: 3, label: "ADV" },
-  intermediate: { dots: 2, label: "INT" },
-  beginner: { dots: 1, label: "BGN" },
+const levelMap: Record<string, { dots: number; label: string }> = {
+  expert: { dots: 4, label: "Expert" },
+  advanced: { dots: 3, label: "Advanced" },
+  intermediate: { dots: 2, label: "Intermediate" },
+  beginner: { dots: 1, label: "Beginner" },
 };
 
 export default function CyberSkills() {
   return (
-    <section className="py-24 border-t border-border" id="skills">
+    <section className="py-24 bg-bg" id="skills">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <div className="font-mono text-[11px] text-muted tracking-[0.3em] uppercase mb-12">
-            SEC.03 &mdash; SKILLS
-          </div>
+          <p className="font-mono text-xs text-accent tracking-wider mb-2">02</p>
+          <h2 className="text-3xl font-bold text-heading">Skills</h2>
         </ScrollReveal>
 
         <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
-          staggerInterval={0.1}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12"
+          staggerInterval={0.08}
         >
           {skills.map((group) => (
             <StaggerItem key={group.category}>
-              <div>
-                <h3 className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-6 pb-3 border-b border-divider">
+              <div className="bg-surface rounded-xl border border-border p-6 shadow-sm hover:shadow-md hover:border-[#cbd5e1] transition-all duration-200">
+                <h3 className="text-sm font-semibold text-heading mb-5">
                   {group.category}
                 </h3>
                 <div className="space-y-3">
                   {group.items.map((item) => {
-                    const config = levelMap[item.level] ?? {
-                      dots: 1,
-                      label: "BGN",
-                    };
+                    const config = levelMap[item.level] ?? { dots: 1, label: "Beginner" };
                     return (
-                      <div
-                        key={item.name}
-                        className="flex items-center justify-between"
-                      >
-                        <span className="text-sm text-body">
-                          {item.name}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <div className="flex gap-1">
-                            {[1, 2, 3, 4].map((dot) => (
-                              <div
-                                key={dot}
-                                className={`w-1.5 h-1.5 rounded-full ${
-                                  dot <= config.dots
-                                    ? "bg-accent"
-                                    : "bg-border"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="font-mono text-[10px] text-muted w-7 text-right">
-                            {config.label}
-                          </span>
+                      <div key={item.name} className="flex items-center justify-between">
+                        <span className="text-sm text-body">{item.name}</span>
+                        <div className="flex items-center gap-1.5">
+                          {[1, 2, 3, 4].map((dot) => (
+                            <div
+                              key={dot}
+                              className={`w-2 h-2 rounded-full ${
+                                dot <= config.dots ? "bg-accent" : "bg-border"
+                              }`}
+                            />
+                          ))}
                         </div>
                       </div>
                     );

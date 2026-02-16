@@ -4,49 +4,52 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* ===== Light Mode — Clean & Professional ===== */
+/* ===== AhnLab-inspired Light Theme ===== */
 :root {
-  --accent-rgb: 13, 148, 136;
-  --radius: 0.5rem;
+  --accent-rgb: 37, 99, 235;
+  --radius: 0.75rem;
 
-  /* shadcn tokens */
-  --background: #fafbfc;
-  --foreground: #0f172a;
+  --background: #ffffff;
+  --foreground: #1a1f36;
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #1a1f36;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #0d9488;
+  --popover-foreground: #1a1f36;
+  --primary: #2563eb;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #475569;
-  --muted: #f1f5f9;
-  --muted-foreground: #94a3b8;
-  --accent: #0d9488;
+  --secondary: #f7f9fc;
+  --secondary-foreground: #4a5568;
+  --muted: #eef2f7;
+  --muted-foreground: #8896ab;
+  --accent: #2563eb;
   --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #0d9488;
+  --destructive: #dc2626;
+  --border: #e5e9f0;
+  --input: #e5e9f0;
+  --ring: #2563eb;
 }
 
 @theme inline {
-  /* custom design tokens */
-  --color-bg: #fafbfc;
-  --color-surface: #ffffff;
-  --color-elevated: #f1f5f9;
-  --color-heading: #0f172a;
-  --color-body: #475569;
-  --color-muted: #94a3b8;
-  --color-accent: #0d9488;
-  --color-accent-dim: rgba(13, 148, 136, 0.06);
-  --color-border: #e2e8f0;
-  --color-divider: rgba(13, 148, 136, 0.12);
+  --color-bg: #ffffff;
+  --color-surface: #f7f9fc;
+  --color-elevated: #eef2f7;
+  --color-heading: #1a1f36;
+  --color-body: #4a5568;
+  --color-muted: #8896ab;
+  --color-accent: #2563eb;
+  --color-accent-dim: rgba(37, 99, 235, 0.06);
+  --color-accent-border: rgba(37, 99, 235, 0.15);
+  --color-border: #e5e9f0;
+  --color-divider: rgba(37, 99, 235, 0.1);
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-footer-bg: #1a1f36;
+  --color-footer-text: #94a3b8;
   --font-sans: "IBM Plex Sans", "Pretendard Variable", "Pretendard",
     sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* shadcn required mappings */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -78,16 +81,16 @@ body {
   font-family: var(--font-sans);
 }
 
-/* ===== Dot Grid Background ===== */
+/* Dot Grid */
 .dot-grid {
   background-image: radial-gradient(
-    rgba(13, 148, 136, 0.06) 1px,
+    rgba(37, 99, 235, 0.03) 1px,
     transparent 1px
   );
-  background-size: 24px 24px;
+  background-size: 28px 28px;
 }
 
-/* ===== Scrollbar ===== */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -107,26 +110,10 @@ body {
   color: #ffffff;
 }
 
-/* ===== Animations ===== */
+/* Animations */
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .blink-cursor::after {
@@ -137,39 +124,19 @@ body {
   margin-left: 2px;
 }
 
-/* ===== Section Divider ===== */
-.section-rule {
-  height: 1px;
-  background: linear-gradient(to right, var(--color-accent), transparent 60%);
-  opacity: 0.15;
-}
-
-/* ===== PDF / Print ===== */
-.pdf-page {
-  break-after: page;
-}
-.pdf-page:last-child {
-  break-after: auto;
-}
-.pdf-no-break {
-  break-inside: avoid;
-}
+/* PDF / Print */
+.pdf-page { break-after: page; }
+.pdf-page:last-child { break-after: auto; }
+.pdf-no-break { break-inside: avoid; }
 
 @media print {
-  @page {
-    size: A4;
-    margin: 15mm;
-  }
+  @page { size: A4; margin: 15mm; }
   body {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     background: white !important;
     color: #111 !important;
   }
-  .print-hide {
-    display: none !important;
-  }
-  * {
-    box-shadow: none !important;
-  }
+  .print-hide { display: none !important; }
+  * { box-shadow: none !important; }
 }

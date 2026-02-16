@@ -2,22 +2,22 @@ import { tracerDetail } from "@/data/portfolio";
 
 export default function TracerDetail({ onClose }: { onClose: () => void }) {
   return (
-    <div className="border border-border mt-6 bg-surface">
+    <div className="border border-border mt-6 bg-bg rounded-xl overflow-hidden shadow-sm">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-border">
+      <header className="flex items-center justify-between px-6 py-4 border-b border-border bg-surface">
         <div className="flex items-center gap-4">
-          <h3 className="font-mono text-lg font-bold text-accent tracking-wide">
+          <h3 className="text-lg font-bold text-accent">
             TRACER
           </h3>
-          <span className="font-mono text-[10px] tracking-[0.15em] uppercase px-2 py-0.5 border border-accent/40 text-accent">
+          <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-md bg-accent-dim text-accent border border-accent-border font-semibold">
             최우수상
           </span>
         </div>
         <button
           onClick={onClose}
-          className="font-mono text-[11px] text-muted hover:text-accent transition-colors tracking-wider"
+          className="text-sm text-muted hover:text-accent transition-colors"
         >
-          CLOSE
+          Close
         </button>
       </header>
 
@@ -25,7 +25,7 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
         {/* Background + Role */}
         <section className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3 space-y-4">
-            <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+            <div className="font-mono text-[10px] text-accent tracking-wider uppercase font-medium">
               PROJECT BACKGROUND
             </div>
             <h4 className="text-xl md:text-2xl font-bold text-heading leading-tight">
@@ -40,19 +40,17 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
 
           {/* Role & Contributions */}
           <div className="lg:col-span-2">
-            <div className="border border-border bg-bg p-5 font-mono text-sm h-full">
-              <div className="text-[10px] text-accent tracking-[0.2em] uppercase mb-4 pb-2 border-b border-border">
+            <div className="border border-border bg-surface rounded-xl p-5 h-full">
+              <div className="font-mono text-[10px] text-accent tracking-wider uppercase font-medium mb-4 pb-2 border-b border-border">
                 ROLE &amp; CONTRIBUTIONS
               </div>
-              <div className="text-heading text-sm mb-4">
+              <div className="text-heading text-sm font-semibold mb-4">
                 {tracerDetail.role}
               </div>
               <ul className="space-y-2 text-muted text-xs">
                 {tracerDetail.contributions.map((c, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-accent mt-0.5 text-[10px]">
-                      &#9656;
-                    </span>
+                    <span className="text-accent mt-0.5">&#8226;</span>
                     <span>{c}</span>
                   </li>
                 ))}
@@ -63,20 +61,20 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
 
         {/* Architecture Flow */}
         <section className="space-y-4">
-          <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+          <div className="font-mono text-[10px] text-accent tracking-wider uppercase font-medium">
             SYSTEM ARCHITECTURE FLOW
           </div>
           <div className="overflow-x-auto pb-4">
-            <div className="flex items-center justify-between min-w-[700px] p-6 border border-border bg-bg">
+            <div className="flex items-center justify-between min-w-[700px] p-6 border border-border bg-surface rounded-xl">
               {tracerDetail.architecture.map((node, i) => (
                 <div key={i} className="contents">
                   <div className="flex flex-col items-center gap-2">
                     <div
-                      className={`w-28 h-14 border flex items-center justify-center text-center p-2 ${
+                      className={`w-28 h-14 rounded-lg border flex items-center justify-center text-center p-2 ${
                         i === 0 ||
                         i === tracerDetail.architecture.length - 1
-                          ? "border-accent/40 bg-accent-dim shadow-[0_0_10px_rgba(13,148,136,0.06)]"
-                          : "border-border bg-surface"
+                          ? "border-accent-border bg-accent-dim"
+                          : "border-border bg-bg"
                       }`}
                     >
                       <span className="text-xs font-bold text-heading font-mono">
@@ -107,9 +105,9 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
           {tracerDetail.detailFeatures.map((feat, i) => (
             <div
               key={i}
-              className="p-5 border border-border hover:border-accent/30 transition-colors bg-bg"
+              className="p-5 border border-border rounded-xl bg-surface hover:border-[#cbd5e1] hover:shadow-sm transition-all duration-200"
             >
-              <h5 className="text-heading font-bold text-sm mb-2">
+              <h5 className="text-heading font-semibold text-sm mb-2">
                 {feat.title}
               </h5>
               <p className="text-muted text-xs leading-relaxed">
@@ -121,11 +119,11 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
 
         {/* Demo Videos */}
         <section className="space-y-6">
-          <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase">
+          <div className="font-mono text-[10px] text-accent tracking-wider uppercase font-medium">
             DEMO &mdash; SYSMON ENVIRONMENT
           </div>
           <div
-            className="relative w-full overflow-hidden border border-border"
+            className="relative w-full overflow-hidden border border-border rounded-xl"
             style={{ paddingBottom: "56.25%" }}
           >
             <iframe
@@ -137,11 +135,11 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
             />
           </div>
 
-          <div className="font-mono text-[10px] text-accent tracking-[0.2em] uppercase mt-8">
+          <div className="font-mono text-[10px] text-accent tracking-wider uppercase font-medium mt-8">
             DEMO &mdash; NON-SYSMON ENVIRONMENT
           </div>
           <div
-            className="relative w-full overflow-hidden border border-border"
+            className="relative w-full overflow-hidden border border-border rounded-xl"
             style={{ paddingBottom: "56.25%" }}
           >
             <iframe
@@ -155,10 +153,10 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
         </section>
 
         {/* Results */}
-        <section className="border border-accent/30 bg-accent-dim px-8 py-6 flex flex-wrap gap-10 items-center justify-around">
+        <section className="border border-accent-border bg-accent-dim rounded-xl px-8 py-6 flex flex-wrap gap-10 items-center justify-around">
           {tracerDetail.results.map((r, i) => (
             <div key={i} className="flex flex-col items-center text-center">
-              <span className="font-mono text-[10px] text-accent/60 tracking-[0.2em] uppercase">
+              <span className="font-mono text-[10px] text-accent/60 tracking-wider uppercase">
                 {r.label}
               </span>
               <span className="text-lg font-bold text-heading mt-1">
