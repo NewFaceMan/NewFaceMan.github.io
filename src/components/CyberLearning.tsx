@@ -87,14 +87,14 @@ export default function CyberLearning() {
                 {coreSkills.map((row, i) => (
                   <StaggerItem key={i}>
                     <div
-                      className={`grid grid-cols-[110px_1fr] md:grid-cols-[130px_1fr] text-sm ${
+                      className={`grid grid-cols-[90px_1fr] sm:grid-cols-[110px_1fr] md:grid-cols-[130px_1fr] text-sm ${
                         i < coreSkills.length - 1 ? "border-b border-border" : ""
                       }`}
                     >
-                      <div className="px-5 py-4 font-semibold text-heading flex items-start">
+                      <div className="px-3 sm:px-5 py-3 sm:py-4 font-semibold text-heading flex items-start">
                         {row.skill}
                       </div>
-                      <div className="px-5 py-4 text-body border-l border-border leading-relaxed">
+                      <div className="px-3 sm:px-5 py-3 sm:py-4 text-body border-l border-border leading-relaxed">
                         {boldArrows(row.experience)}
                       </div>
                     </div>
@@ -116,14 +116,14 @@ export default function CyberLearning() {
                 {expSkills.map((row, i) => (
                   <StaggerItem key={i}>
                     <div
-                      className={`grid grid-cols-[110px_1fr] md:grid-cols-[130px_1fr] text-sm ${
+                      className={`grid grid-cols-[90px_1fr] sm:grid-cols-[110px_1fr] md:grid-cols-[130px_1fr] text-sm ${
                         i < expSkills.length - 1 ? "border-b border-border" : ""
                       }`}
                     >
-                      <div className="px-5 py-3.5 font-medium text-heading flex items-start">
+                      <div className="px-3 sm:px-5 py-3 sm:py-3.5 font-medium text-heading flex items-start">
                         {row.skill}
                       </div>
-                      <div className="px-5 py-3.5 text-muted border-l border-border leading-relaxed text-[13px]">
+                      <div className="px-3 sm:px-5 py-3 sm:py-3.5 text-muted border-l border-border leading-relaxed text-[13px]">
                         {boldArrows(row.experience)}
                       </div>
                     </div>

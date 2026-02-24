@@ -66,12 +66,12 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
             SYSTEM ARCHITECTURE FLOW
           </div>
           <div className="overflow-x-auto pb-4">
-            <div className="flex items-center justify-between min-w-[700px] p-6 border border-border bg-surface rounded-xl">
+            <div className="flex items-center justify-between min-w-[600px] sm:min-w-[700px] p-4 sm:p-6 border border-border bg-surface rounded-xl">
               {tracerDetail.architecture.map((node, i) => (
                 <div key={i} className="contents">
                   <div className="flex flex-col items-center gap-2">
                     <div
-                      className={`w-28 h-14 rounded-lg border flex items-center justify-center text-center p-2 ${
+                      className={`w-24 sm:w-28 h-14 rounded-lg border flex items-center justify-center text-center p-1.5 sm:p-2 ${
                         i === 0 ||
                         i === tracerDetail.architecture.length - 1
                           ? "border-accent-border bg-accent-dim"
@@ -154,7 +154,7 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
         </section>
 
         {/* Results */}
-        <section className="border border-accent-border bg-accent-dim rounded-xl px-8 py-6 flex flex-wrap gap-10 items-center justify-around">
+        <section className="border border-accent-border bg-accent-dim rounded-xl px-4 sm:px-8 py-6 flex flex-wrap gap-6 sm:gap-10 items-center justify-around">
           {tracerDetail.results.map((r, i) => (
             <div key={i} className="flex flex-col items-center text-center">
               <span className="font-sans text-[10px] text-accent/60 tracking-wider uppercase">

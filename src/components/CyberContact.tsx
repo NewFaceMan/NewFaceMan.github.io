@@ -72,7 +72,7 @@ export default function CyberContact() {
                 </div>
                 <div>
                   <div className="text-xs text-muted font-medium mb-0.5">{link.label}</div>
-                  <div className="text-sm text-heading group-hover:text-accent transition-colors">
+                  <div className="text-sm text-heading group-hover:text-accent transition-colors break-all">
                     {link.value}
                   </div>
                 </div>

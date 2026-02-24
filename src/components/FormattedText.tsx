@@ -25,13 +25,13 @@ export default function FormattedText({
 }: FormattedTextProps) {
   // No newlines → plain text
   if (!text.includes("\n")) {
-    return <p className={className}>{boldArrows(text)}</p>;
+    return <p className={`break-words ${className}`}>{boldArrows(text)}</p>;
   }
 
   const lines = text.split("\n");
 
   return (
-    <div className={className}>
+    <div className={`break-words ${className}`}>
       {lines.map((line, i) => {
         const trimmed = line.trim();
         if (!trimmed) return null;
