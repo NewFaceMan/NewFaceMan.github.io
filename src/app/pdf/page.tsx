@@ -6,16 +6,26 @@ import {
   certifications,
   education,
   profileDetail,
-  ctf,
+  contact,
+  securityExperience,
 } from "@/data/portfolio";
+import FormattedText, { boldArrows } from "@/components/FormattedText";
 
 export default function PdfPage() {
   const tracer = projects.find((p) => p.id === "tracer")!;
-  const otherProjects = projects.filter((p) => p.id !== "tracer");
+  const securityBot = projects.find((p) => p.id === "security-bot")!;
+
+  // Gather all troubleshooting cases
+  const allTroubleshooting = projects.flatMap((p) =>
+    p.troubleshooting.map((ts) => ({
+      projectTitle: p.title,
+      ...ts,
+    }))
+  );
 
   return (
     <div className="mx-auto max-w-[210mm] text-[11px] leading-[1.5] text-gray-900">
-      {/* ==================== Page 1: Profile & Overview ==================== */}
+      {/* ==================== Page 1: Profile & About ==================== */}
       <section className="pdf-page">
         {/* Header */}
         <header className="mb-4 border-b-2 border-gray-800 pb-3">
@@ -44,6 +54,9 @@ export default function PdfPage() {
           <h2 className="mb-1.5 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
             About
           </h2>
+          <p className="text-[10.5px] text-gray-700 mb-2">
+            {about.narrative}
+          </p>
           <p className="text-[11px] font-semibold text-gray-800 mb-2">
             {about.valueProposition}
           </p>
@@ -109,10 +122,10 @@ export default function PdfPage() {
         </div>
       </section>
 
-      {/* ==================== Page 2: TRACER (Solo) ==================== */}
+      {/* ==================== Page 2: TRACER Project ==================== */}
       <section className="pdf-page">
         <h2 className="mb-3 text-[16px] font-bold text-gray-800 uppercase tracking-wide border-b-2 border-gray-800 pb-1">
-          Projects
+          01. Project Experience
         </h2>
 
         <div className="pdf-no-break mb-2">
@@ -154,26 +167,35 @@ export default function PdfPage() {
               <span className="font-bold text-red-600 text-[9px] uppercase mr-1">
                 Problem:
               </span>
-              {tracer.problem}
+              <FormattedText
+                text={tracer.problem}
+                className="inline-block text-[10.5px]"
+              />
             </div>
             <div>
               <span className="font-bold text-blue-600 text-[9px] uppercase mr-1">
                 Action:
               </span>
-              {tracer.action}
+              <FormattedText
+                text={tracer.action}
+                className="inline-block text-[10.5px]"
+              />
             </div>
             <div>
               <span className="font-bold text-green-600 text-[9px] uppercase mr-1">
                 Result:
               </span>
-              {tracer.result}
+              <FormattedText
+                text={tracer.result}
+                className="inline-block text-[10.5px]"
+              />
             </div>
           </div>
 
           {/* Features */}
           <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] text-gray-700 mb-2">
             {tracer.features.map((f, i) => (
-              <li key={i}>{f}</li>
+              <li key={i}>{boldArrows(f)}</li>
             ))}
           </ul>
 
@@ -189,169 +211,192 @@ export default function PdfPage() {
             ))}
           </div>
 
-          {/* Troubleshooting (condensed: issue + resolution only) */}
-          {tracer.troubleshooting.length > 0 && (
-            <div className="mb-2">
-              <h4 className="text-[10px] font-bold text-gray-800 mb-1">
-                Troubleshooting
-              </h4>
-              {tracer.troubleshooting.map((ts, i) => (
-                <div
-                  key={i}
-                  className="text-[10px] text-gray-700 mb-1 pl-2 border-l-2 border-gray-300"
-                >
-                  <span className="font-semibold text-red-600">문제:</span>{" "}
-                  {ts.issue}
-                  <br />
-                  <span className="font-semibold text-green-600">해결:</span>{" "}
-                  {ts.resolution}
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Job Relevance */}
+          {/* SecOps Relevance */}
           <div className="text-[10px] text-gray-500 italic">
-            DFIR 연관성: {tracer.jobRelevance}
+            SecOps 연관성:
+            <FormattedText
+              text={tracer.jobRelevance}
+              className="inline-block text-[10px]"
+            />
           </div>
         </div>
       </section>
 
-      {/* ==================== Page 3: Security Bot + Jarvis Bot ==================== */}
+      {/* ==================== Page 3: Security Bot + Problem Solving ==================== */}
       <section className="pdf-page">
+        {/* Security Bot */}
         <h2 className="mb-3 text-[16px] font-bold text-gray-800 uppercase tracking-wide border-b-2 border-gray-800 pb-1">
-          Projects (cont.)
+          01. Project Experience (cont.)
         </h2>
 
-        {otherProjects.map((project) => (
-          <div key={project.id} className="pdf-no-break mb-5">
-            <div className="flex items-baseline gap-2">
-              <h3 className="text-[14px] font-bold text-gray-900">
-                {project.title}
-              </h3>
+        <div className="pdf-no-break mb-4">
+          <div className="flex items-baseline gap-2">
+            <h3 className="text-[14px] font-bold text-gray-900">
+              {securityBot.title}
+            </h3>
+          </div>
+          <p className="text-[10px] text-gray-500 mt-0.5">
+            {securityBot.subtitle}
+          </p>
+
+          <div className="flex flex-wrap gap-x-3 text-[9px] text-gray-500 mt-1 mb-2">
+            <span>{securityBot.period}</span>
+            <span>|</span>
+            <span>{securityBot.role}</span>
+          </div>
+
+          <div className="space-y-1.5 text-[10.5px] text-gray-700 mb-2">
+            <div>
+              <span className="font-bold text-red-600 text-[9px] uppercase mr-1">
+                Problem:
+              </span>
+              <FormattedText
+                text={securityBot.problem}
+                className="inline-block text-[10.5px]"
+              />
             </div>
-            <p className="text-[10px] text-gray-500 mt-0.5">
-              {project.subtitle}
-            </p>
-
-            {/* Metadata */}
-            <div className="flex flex-wrap gap-x-3 text-[9px] text-gray-500 mt-1 mb-2">
-              <span>{project.period}</span>
-              <span>|</span>
-              <span>{project.role}</span>
-              {project.teamSize && (
-                <>
-                  <span>|</span>
-                  <span>{project.teamSize}</span>
-                </>
-              )}
-              {project.contribution && (
-                <>
-                  <span>|</span>
-                  <span>기여도 {project.contribution}</span>
-                </>
-              )}
+            <div>
+              <span className="font-bold text-blue-600 text-[9px] uppercase mr-1">
+                Action:
+              </span>
+              <FormattedText
+                text={securityBot.action}
+                className="inline-block text-[10.5px]"
+              />
             </div>
-
-            {/* P/A/R */}
-            <div className="space-y-1.5 text-[10.5px] text-gray-700 mb-2">
-              <div>
-                <span className="font-bold text-red-600 text-[9px] uppercase mr-1">
-                  Problem:
-                </span>
-                {project.problem}
-              </div>
-              <div>
-                <span className="font-bold text-blue-600 text-[9px] uppercase mr-1">
-                  Action:
-                </span>
-                {project.action}
-              </div>
-              <div>
-                <span className="font-bold text-green-600 text-[9px] uppercase mr-1">
-                  Result:
-                </span>
-                {project.result}
-              </div>
+            <div>
+              <span className="font-bold text-green-600 text-[9px] uppercase mr-1">
+                Result:
+              </span>
+              <FormattedText
+                text={securityBot.result}
+                className="inline-block text-[10.5px]"
+              />
             </div>
+          </div>
 
-            {/* Features */}
-            <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] text-gray-700 mb-2">
-              {project.features.map((f, i) => (
-                <li key={i}>{f}</li>
-              ))}
-            </ul>
+          <ul className="list-disc pl-4 space-y-0.5 text-[10.5px] text-gray-700 mb-2">
+            {securityBot.features.map((f, i) => (
+              <li key={i}>{boldArrows(f)}</li>
+            ))}
+          </ul>
 
-            {/* Tech Stack */}
-            <div className="flex flex-wrap gap-1 mb-2">
-              {project.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded bg-gray-100 px-1.5 py-0.5 text-[9px] font-medium text-gray-600 border border-gray-200"
-                >
-                  {tech}
-                </span>
-              ))}
+          <div className="flex flex-wrap gap-1 mb-2">
+            {securityBot.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded bg-gray-100 px-1.5 py-0.5 text-[9px] font-medium text-gray-600 border border-gray-200"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Problem Solving */}
+        <h2 className="mb-2 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
+          02. Problem Solving
+        </h2>
+
+        {allTroubleshooting.map((ts, i) => (
+          <div
+            key={i}
+            className="pdf-no-break text-[10px] text-gray-700 mb-3 pl-2 border-l-2 border-gray-300"
+          >
+            <span className="text-[9px] font-bold text-blue-600">
+              [{ts.projectTitle}]
+            </span>
+            <div className="mt-1">
+              <span className="font-semibold text-red-600">문제:</span>{" "}
+              {ts.issue}
             </div>
-
-            {/* Troubleshooting (condensed) */}
-            {project.troubleshooting.length > 0 && (
-              <div className="mb-2">
-                <h4 className="text-[10px] font-bold text-gray-800 mb-1">
-                  Troubleshooting
-                </h4>
-                {project.troubleshooting.map((ts, i) => (
-                  <div
-                    key={i}
-                    className="text-[10px] text-gray-700 mb-1 pl-2 border-l-2 border-gray-300"
-                  >
-                    <span className="font-semibold text-red-600">문제:</span>{" "}
-                    {ts.issue}
-                    <br />
-                    <span className="font-semibold text-green-600">
-                      해결:
-                    </span>{" "}
-                    {ts.resolution}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Job Relevance */}
-            <div className="text-[10px] text-gray-500 italic">
-              DFIR 연관성: {project.jobRelevance}
+            <div className="mt-0.5">
+              <span className="font-semibold text-blue-600">과정:</span>
+              <FormattedText
+                text={ts.process}
+                className="inline-block text-[10px]"
+              />
             </div>
-
-            {project.github && (
-              <p className="mt-1 text-[9px] text-gray-400">
-                {project.github}
-              </p>
-            )}
+            <div className="mt-0.5">
+              <span className="font-semibold text-green-600">해결:</span>
+              <FormattedText
+                text={ts.resolution}
+                className="inline-block text-[10px]"
+              />
+            </div>
           </div>
         ))}
       </section>
 
-      {/* ==================== Page 4: Skills & Activities ==================== */}
+      {/* ==================== Page 4: Security Experience + Skills + Education ==================== */}
       <section className="pdf-page">
-        {/* Skills */}
+        {/* Security Experience */}
         <div className="pdf-no-break mb-4">
           <h2 className="mb-2 text-[16px] font-bold text-gray-800 uppercase tracking-wide border-b-2 border-gray-800 pb-1">
-            Skills
+            03. Security Experience
           </h2>
-          <table className="w-full text-[10px] border-collapse">
-            <thead>
-              <tr className="text-left text-[9px] text-gray-500 uppercase">
-                <th className="pb-1 pr-3 font-semibold w-[60px]">구분</th>
-                <th className="pb-1 pr-3 font-semibold w-[100px]">Skill</th>
-                <th className="pb-1 font-semibold">기능구현 및 활용경험</th>
-              </tr>
-            </thead>
+          <div className="grid grid-cols-2 gap-3">
+            {securityExperience.map((item) => (
+              <div
+                key={item.id}
+                className="pdf-no-break border border-gray-200 rounded p-2.5"
+              >
+                <span className="text-[8px] font-bold text-blue-600 uppercase">
+                  {item.category}
+                </span>
+                <h4 className="text-[10px] font-bold text-gray-900 mt-0.5 mb-1">
+                  {item.title}
+                </h4>
+                <p className="text-[9px] text-gray-600 mb-1.5">
+                  {boldArrows(item.description)}
+                </p>
+                <div className="flex flex-wrap gap-1 mb-1">
+                  {item.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="rounded bg-gray-100 px-1 py-0.5 text-[8px] text-gray-500 border border-gray-200"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-[8px] text-gray-500 italic">
+                  {item.outcome}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills */}
+        <div className="pdf-no-break mb-4">
+          <h2 className="mb-2 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
+            04. Skills
+          </h2>
+
+          <p className="text-[9px] font-bold text-blue-600 mb-1">주력 기술</p>
+          <table className="w-full text-[10px] border-collapse mb-3">
             <tbody>
-              {skills.map((row, i) => (
+              {skills.filter(r => r.level === "core").map((row, i) => (
                 <tr key={i} className="text-gray-700 border-t border-gray-200">
-                  <td className="py-1 pr-3 font-semibold text-gray-800">{row.category}</td>
-                  <td className="py-1 pr-3 font-medium">{row.skill}</td>
+                  <td className="py-1 pr-3 font-semibold text-gray-800 w-[100px]">
+                    {row.skill}
+                  </td>
                   <td className="py-1">{row.experience}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <p className="text-[9px] font-bold text-gray-500 mb-1">활용 경험</p>
+          <table className="w-full text-[10px] border-collapse">
+            <tbody>
+              {skills.filter(r => r.level === "experience").map((row, i) => (
+                <tr key={i} className="text-gray-700 border-t border-gray-200">
+                  <td className="py-1 pr-3 font-medium text-gray-800 w-[100px]">
+                    {row.skill}
+                  </td>
+                  <td className="py-1 text-gray-500">{row.experience}</td>
                 </tr>
               ))}
             </tbody>
@@ -388,21 +433,12 @@ export default function PdfPage() {
           </table>
         </div>
 
-        {/* CTF */}
-        <div>
-          <div className="pdf-no-break">
-            <h2 className="mb-1.5 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
-              CTF / 챌린지
-            </h2>
-            <ul className="space-y-0.5 text-[10px] text-gray-700">
-              {ctf.map((c, i) => (
-                <li key={i}>
-                  <span className="font-medium">{c.name}</span>{" "}
-                  <span className="text-gray-500">- {c.note}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Contact */}
+        <div className="pdf-no-break">
+          <h2 className="mb-1.5 text-[13px] font-bold text-gray-800 uppercase tracking-wide border-b border-gray-300 pb-0.5">
+            Contact
+          </h2>
+          <p className="text-[10.5px] text-gray-700">{contact.message}</p>
         </div>
       </section>
     </div>

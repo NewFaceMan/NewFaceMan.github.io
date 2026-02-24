@@ -3,22 +3,23 @@ import "./globals.css";
 import MotionProvider from "@/components/motion/MotionProvider";
 
 export const metadata: Metadata = {
-  title: "박상우 | CERT & DFIR Analyst 포트폴리오",
+  title: "박상우 | Security Operations & DFIR Analyst",
   description:
-    "디지털 포렌식과 침해사고 대응을 중심으로, Python 기반 보안 도구 개발과 AI를 활용한 분석 자동화를 연구하는 CERT/DFIR 분석가가 되고자 합니다.",
+    "위협 탐지·대응 자동화와 정밀한 아티팩트 분석을 추구하는 SecOps/DFIR 분석가가 되고자 합니다.",
   keywords: [
-    "CERT",
+    "SecOps",
     "DFIR",
-    "디지털 포렌식",
-    "침해사고 대응",
+    "Security Operations",
+    "Threat Detection",
+    "네트워크 보안",
     "포트폴리오",
     "Python",
   ],
   authors: [{ name: "박상우" }],
   openGraph: {
-    title: "박상우 | CERT & DFIR Analyst 포트폴리오",
+    title: "박상우 | Security Operations & DFIR Analyst",
     description:
-      "디지털 포렌식과 침해사고 대응을 중심으로, Python 기반 보안 도구 개발과 AI를 활용한 분석 자동화를 연구하는 CERT/DFIR 분석가가 되고자 합니다.",
+      "위협 탐지·대응 자동화와 정밀한 아티팩트 분석을 추구하는 SecOps/DFIR 분석가가 되고자 합니다.",
     type: "website",
   },
 };

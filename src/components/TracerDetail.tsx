@@ -1,4 +1,5 @@
 import { tracerDetail } from "@/data/portfolio";
+import { boldArrows } from "./FormattedText";
 
 export default function TracerDetail({ onClose }: { onClose: () => void }) {
   return (
@@ -51,7 +52,7 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
                 {tracerDetail.contributions.map((c, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="text-accent mt-0.5">&#8226;</span>
-                    <span>{c}</span>
+                    <span>{boldArrows(c)}</span>
                   </li>
                 ))}
               </ul>
@@ -111,7 +112,7 @@ export default function TracerDetail({ onClose }: { onClose: () => void }) {
                 {feat.title}
               </h5>
               <p className="text-muted text-xs leading-relaxed">
-                {feat.description}
+                {boldArrows(feat.description)}
               </p>
             </div>
           ))}

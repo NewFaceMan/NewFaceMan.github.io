@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ScrollProgress } from "./motion/MotionWrappers";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Education", href: "#education" },
+  { name: "Projects", href: "#project-experience" },
+  { name: "Problem Solving", href: "#problem-solving" },
+  { name: "Security", href: "#security-experience" },
+  { name: "Learning", href: "#learning" },
   { name: "Contact", href: "#contact" },
 ];
 

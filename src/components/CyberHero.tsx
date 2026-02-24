@@ -37,9 +37,10 @@ export default function CyberHero() {
           <FadeIn delay={0.7} duration={0.6}>
             <div className="flex flex-wrap gap-3 mt-8">
               {[
+                "Security Operations",
                 "DFIR",
-                "Threat Intelligence",
-                "AI Agent 자동화",
+                "Threat Detection",
+                "자동화",
               ].map((item) => (
                 <span
                   key={item}
@@ -54,7 +55,7 @@ export default function CyberHero() {
           <FadeIn delay={0.85} duration={0.6}>
             <div className="flex flex-wrap gap-3 mt-10">
               <a
-                href="#projects"
+                href="#project-experience"
                 className="text-sm font-semibold px-6 py-3 rounded-lg bg-accent text-white hover:bg-[#3b82f6] shadow-sm transition-all duration-200"
               >
                 View Projects
